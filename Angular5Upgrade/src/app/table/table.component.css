@@ -1,0 +1,30 @@
+.example-container {
+    display: flex;
+    position:relative;
+    flex-direction: column;
+    max-height: 600px;
+    min-width: 300px;
+    max-width:600px;
+    transform: translateX(50%);
+    margin-top:40px;
+  }
+
+  .mat-table {
+    overflow: auto;
+    max-height: 600px;
+  }
+
+mat-form-field
+{
+    position: relative;
+    width: 95%;
+    left: 15px;
+    margin-top:10px;
+
+}
+
+.img-thumbnail{
+    max-width: 70%;
+    height: 61px;
+    cursor:pointer;
+}

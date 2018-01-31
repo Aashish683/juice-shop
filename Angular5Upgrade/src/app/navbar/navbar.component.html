@@ -1,0 +1,38 @@
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+  <a class="navbar-brand" href="#">
+    <img src="assets/images/JuiceShop_Logo.png">
+  </a>
+ <a href="#">
+   <span>OSWAP Juice Shop {{version}}</span>
+ </a>
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+     <li class="nav-item" *ngIf="userServe.isLoggedIn">
+        <a class="nav-link" routerLink="/login">Logout<span class="sr-only">(current)</span></a>
+     </li>
+      <li class="nav-item">
+        <a class="nav-link" *ngIf="!userServe.isLoggedIn" routerLink="/login">Login<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" style="cursor:pointer" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Languages
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" *ngFor="let lang of langs" (click)="switchLang(lang)">{{lang}}</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <form class="form-inline">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/contact">Contact us</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/about">About us</a>
+      </li>
+    </ul>
+
+</nav>

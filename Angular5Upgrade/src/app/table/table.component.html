@@ -1,0 +1,51 @@
+
+
+<div class="example-container mat-elevation-z8">
+
+  <mat-table #table [dataSource]="dataSource">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+
+    <!-- Image Column -->
+    <ng-container matColumnDef="Image">
+      <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
+      <mat-cell (click)="openDialog()" *matCellDef="let element">
+          <img [src]="'assets/images/public/images/products/'+element.image" role="button"
+          class="img-responsive img-thumbnail"
+          style="width: 200px">
+      </mat-cell>
+    </ng-container>
+
+    <!-- Product Column -->
+    <ng-container matColumnDef="Product">
+      <mat-header-cell *matHeaderCellDef> Product </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.name}} </mat-cell>
+    </ng-container>
+
+    <!-- Description Column -->
+    <ng-container matColumnDef="Description">
+      <mat-header-cell *matHeaderCellDef> Description </mat-header-cell>
+      <mat-cell *matCellDef="let element"> ... </mat-cell>
+    </ng-container>
+
+    <!-- Price Column -->
+    <ng-container matColumnDef="Price">
+      <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+      <mat-cell *matCellDef="let element"> {{element.price}} </mat-cell>
+    </ng-container>
+
+    <ng-container matColumnDef="Select">
+      <mat-header-cell *matHeaderCellDef>  </mat-header-cell>
+      <mat-cell *matCellDef="let element">  </mat-cell>
+    </ng-container>
+
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  </mat-table>
+
+  <mat-paginator #paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 20]">
+  </mat-paginator>
+</div>

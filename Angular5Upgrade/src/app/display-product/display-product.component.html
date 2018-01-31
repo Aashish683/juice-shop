@@ -1,0 +1,33 @@
+<div class="container">
+  <h1>Product</h1>
+  <div class="ex-container">
+  <div class="name price">
+      <h4>Name</h4>
+      <p>{{data.name}}</p>
+      <h4>Price</h4>
+      <p>{{data.price|currency}}</p>
+  </div>
+  <div class="description image">
+      <h4>Description</h4>
+      <p>{{data.description}}</p>
+      <h4>Image</h4>
+      <img [src]="data.image">
+  </div>
+</div>
+
+   <div class="reviews">
+     <h2>Reviews</h2>
+     <p *ngFor="let review of data.reviews">{{review.rev}}
+       -----by {{review.author}}
+     </p>
+
+     <div class="submit-review">
+        <mat-form-field>
+            <textarea #textPut cols="50" matInput placeholder="Submit a review" matTextareaAutosize matAutosizeMinRows="2"
+                      matAutosizeMaxRows="4"></textarea>
+          </mat-form-field>
+          <button mat-raised-button color="primary" (click)="onSubmit(textPut.value)">Submit</button>
+     </div>
+   </div>
+
+</div>

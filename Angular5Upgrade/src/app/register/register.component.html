@@ -1,0 +1,30 @@
+<mat-card>
+  <h3>User Registration</h3>
+  <div class="form-container">
+    <mat-form-field>
+      <label>Email</label>
+      <input type="text" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <label>Password</label>
+      <input type="text" matInput>
+    </mat-form-field>
+    <mat-form-field>
+      <label>Repeat Password</label>
+      <input type="text" matInput>
+    </mat-form-field>
+    <div class="security-container">
+    <mat-form-field>
+        <mat-select placeholder="Security Question" [(value)]="selected" name="securityQuestion">
+          <mat-option *ngFor="let question of securityQuestions" [value]="question.id">
+            {{question.question}}
+          </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+    <input type="text" matInput placeholder="Answer here">
+    </mat-form-field>
+    </div>
+    </div>
+  <button mat-raised-button color="primary">Register!</button>
+</mat-card>

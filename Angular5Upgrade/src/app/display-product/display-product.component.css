@@ -1,0 +1,17 @@
+.image img{
+    width: 160px;
+    height: 140px;
+}
+.ex-container{
+    display:flex;
+    flex-flow:row;
+}
+
+.ex-container .image.description{
+    position: relative;
+    left: 40%;
+}
+
+mat-form-field{
+    width:100%;
+}

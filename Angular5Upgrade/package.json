@@ -25,7 +25,6 @@
     "@angular/router": "^5.2.0",
     "@ngx-translate/core": "^9.1.1",
     "@ngx-translate/http-loader": "^2.0.1",
-    "angular-4-data-table": "^0.4.3",
     "body-parser": "^1.18.2",
     "bootstrap": "^4.0.0",
     "core-js": "^2.4.1",

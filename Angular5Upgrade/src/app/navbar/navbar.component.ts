@@ -3,7 +3,6 @@ import { Component, OnInit } from '@angular/core';
 import { ConfigurationService } from '../Services/configuration.service';
 import { UserService } from '../Services/user.service';
 import { ChallengeService } from '../Services/challenge.service';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'navbar',
@@ -15,9 +14,8 @@ export class NavbarComponent implements OnInit {
   version:string;
   version$;
     constructor(public adminServe:AdministrationService,public configServe:ConfigurationService,
-       public userServe:UserService,public challengeServe:ChallengeService,
-       public translateServe:TranslateService) {
-         translateServe.setDefaultLang('en');
+       public userServe:UserService,public challengeServe:ChallengeService) {
+
        }
 
   ngOnInit() {
@@ -26,11 +24,6 @@ export class NavbarComponent implements OnInit {
           console.log(versionData);
           this.version='v' + versionData.version;
        })
-  }
-
-
-  switchLang(lang){
-    this.translateServe.use(lang);
   }
 
 }

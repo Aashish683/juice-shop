@@ -18,8 +18,6 @@ export class NavbarComponent implements OnInit {
        public userServe:UserService,public challengeServe:ChallengeService,
        public translateServe:TranslateService) {
          translateServe.setDefaultLang('en');
-         this.langs=languages;
-
        }
 
   ngOnInit() {

@@ -11,7 +11,7 @@
     <ng-container matColumnDef="Image">
       <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
       <mat-cell (click)="openDialog()" *matCellDef="let element">
-          <img [src]="'assets/images/public/images/products/'+element.image" role="button"
+          <img [src]="'../assets/images/public/images/products/'+element.image" role="button"
           class="img-responsive img-thumbnail"
           style="width: 200px">
       </mat-cell>

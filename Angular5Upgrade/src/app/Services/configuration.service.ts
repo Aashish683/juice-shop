@@ -9,7 +9,7 @@ export class ConfigurationService {
   constructor(private http:Http) { }
 
   getApplicationConfiguration(){
-    return this.http.get('http://localhost:3000'+ this.host
+    return this.http.get(this.host
         +'/application-configuration').map(response=>response.json().config);
   }
 }

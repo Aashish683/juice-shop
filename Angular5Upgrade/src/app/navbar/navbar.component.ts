@@ -15,9 +15,9 @@ export class NavbarComponent implements OnInit {
   langs:string[];
   version:string;
   version$;
-    constructor(private adminServe:AdministrationService,private configServe:ConfigurationService,
-       private userServe:UserService,private challengeServe:ChallengeService,
-       private translateServe:TranslateService) {
+    constructor(public adminServe:AdministrationService,public configServe:ConfigurationService,
+       public userServe:UserService,public challengeServe:ChallengeService,
+       public translateServe:TranslateService) {
          translateServe.setDefaultLang('en');
          this.langs=languages;
 

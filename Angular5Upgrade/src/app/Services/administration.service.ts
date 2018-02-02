@@ -8,7 +8,7 @@ export class AdministrationService {
   constructor(private http:Http) { }
 
   getApplicationVersion(){
-    return this.http.get('http://localhost:3000'+this.host + '/application-version').map
+    return this.http.get(this.host + '/application-version').map
     (response=>response.json()
     )
     }

@@ -9,11 +9,11 @@ export class UserService {
   constructor(private http:HttpClient) { }
 
   login(params){
-   return this.http.post('http://localhost:3000/rest/user/login',params);
+   return this.http.post('/rest/user/login',params);
   }
 
   testServer(){
-    return this.http.get('http://localhost:3000/rest/admin/application-version');
+    return this.http.get('/rest/admin/application-version');
   }
 
 }

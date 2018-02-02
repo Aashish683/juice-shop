@@ -4,7 +4,6 @@ import { ConfigurationService } from '../Services/configuration.service';
 import { UserService } from '../Services/user.service';
 import { ChallengeService } from '../Services/challenge.service';
 import { TranslateService } from '@ngx-translate/core';
-import languages from '../../assets/translations/languages';
 
 @Component({
   selector: 'navbar',

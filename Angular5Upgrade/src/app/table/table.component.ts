@@ -42,18 +42,13 @@ export class TableComponent implements OnInit {
    });
   }
 
-  openDialog(){
-    console.log(1);
+  openDialog(element){
+    console.log(element);
     let dialogRef=this.dialog.open(DisplayProductComponent,{
-      width:'550px',
-      height:'500px',
-      data:{name:"Juice" ,
-      price:20.00,
-      description:"Juice...",
-      image:"assets/images/JuiceShop_Logo.png",
-      reviews:[{rev:"Review.....",
-                author:"Aashish"
-      }]
+      width:'700px',
+      height:'600px',
+      data:{
+       productData:element
      }
     })
   }

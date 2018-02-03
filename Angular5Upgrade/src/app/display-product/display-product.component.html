@@ -9,9 +9,9 @@
   </div>
   <div class="description image">
       <h4>Description</h4>
-      <p>{{data.description}}</p>
+      <p [innerHTML]="data.description"></p>
       <h4>Image</h4>
-      <img [src]="data.image">
+      <img [src]="'assets/images/public/images/products/'+data.image">
   </div>
 </div>
 

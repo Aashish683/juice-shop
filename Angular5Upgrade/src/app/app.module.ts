@@ -1,3 +1,4 @@
+import { ProductReviewService } from './Services/product-review.service';
 import { ProductService } from './Services/product.service';
 import { BasketService } from './Services/basket.service';
 import { SecurityQuestionService } from './Services/security-question.service';
@@ -158,7 +159,8 @@ import {MatSelectModule} from '@angular/material/select';
               WindowRefService,
               SecurityQuestionService,
               BasketService,
-              ProductService],
+              ProductService,
+              ProductReviewService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

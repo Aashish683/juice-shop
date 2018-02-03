@@ -17,7 +17,7 @@
 
    <div class="reviews">
      <h2>Reviews</h2>
-     <p *ngFor="let review of data.reviews">{{review.rev}}
+     <p *ngFor="let review of reviews$|async">{{review.text}}
        -----by {{review.author}}
      </p>
 

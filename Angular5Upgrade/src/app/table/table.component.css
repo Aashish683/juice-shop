@@ -3,9 +3,9 @@
     position:relative;
     flex-direction: column;
     max-height: 600px;
-    min-width: 300px;
-    max-width:600px;
-    transform: translateX(50%);
+    min-width: 800px;
+    max-width:842px;
+    transform: translateX(30%);
     margin-top:40px;
   }
 
@@ -27,4 +27,29 @@ mat-form-field
     max-width: 70%;
     height: 61px;
     cursor:pointer;
+}
+
+.mat-column-Description{
+    min-width:400px;
+    max-width:560px;
+}
+
+.mat-column-Product{
+    min-width:100px;
+    max-width:140px;
+    padding-right: 40px;
+}
+
+.mat-column-Image{
+    min-width:100px;
+    max-width:100px;
+}
+
+.mat-column-Select{
+    max-width:50px;
+}
+
+.mat-column-Price{
+    max-width:65px;
+    padding-left:20px;
 }

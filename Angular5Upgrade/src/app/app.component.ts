@@ -1,4 +1,3 @@
-import { WindowRefService } from './Services/window-ref.service';
 import { ConfigurationService } from './Services/configuration.service';
 import { Component } from '@angular/core';
 
@@ -12,7 +11,7 @@ export class AppComponent {
   gitHubRibbon = 'orange';
   notifications=[];
 
-  constructor(private confServe:ConfigurationService,private windowServe:WindowRefService){
+  constructor(private confServe:ConfigurationService){
 
   }
 

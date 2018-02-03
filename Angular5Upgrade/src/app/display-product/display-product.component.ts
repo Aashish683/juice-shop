@@ -15,7 +15,6 @@ export class DisplayProductComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) private data: any,private productReviewServe:ProductReviewService) {
       this.data=this.data.productData;
       this.reviews$=this.productReviewServe.get(this.data.id);
-      this.reviews$.subscribe(x=>console.log(x))
     }
 
   ngOnInit(){

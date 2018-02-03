@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource, MatPaginator, MatDialog} from '@angular/material';
 import { DisplayProductComponent } from '../display-product/display-product.component';
 import { ProductService } from '../Services/product.service';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'data-table',
@@ -15,9 +17,10 @@ export class TableComponent implements OnInit {
   dataSource;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private dialog:MatDialog,
-     private basketServe:BasketService,
-     private productServe:ProductService) {
+  constructor(private dialog:MatDialog,private basketServe:BasketService,
+     private productServe:ProductService,
+     private route:ActivatedRoute,
+     private router:Router) {
 
     }
 
@@ -32,7 +35,11 @@ export class TableComponent implements OnInit {
       this.tableData=tableData;
       this.dataSource = new MatTableDataSource<Element>(this.tableData);
       this.dataSource.paginator=this.paginator;
-    });
+      this.filterTable();
+      this.router.events.subscribe(()=>{
+      this.filterTable();
+      });
+   });
   }
 
   openDialog(){
@@ -49,6 +56,16 @@ export class TableComponent implements OnInit {
       }]
      }
     })
+  }
+
+  //To be called on change in route
+  filterTable(){
+    let queryParam:string=this.route.snapshot.queryParams.q;
+      if(queryParam){
+      queryParam=queryParam.trim();
+      queryParam=queryParam.toLowerCase();
+      this.dataSource.filter=queryParam;
+      }
   }
 
 }

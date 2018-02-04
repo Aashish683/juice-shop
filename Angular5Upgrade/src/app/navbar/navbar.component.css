@@ -8,3 +8,7 @@ li.nav-item{
 a.dropdown-item{
   height:25px;
 }
+
+nav a:nth-child(2){
+  font-size:13px;
+}

@@ -45,8 +45,8 @@ export class TableComponent implements OnInit {
   openDialog(element){
     console.log(element);
     let dialogRef=this.dialog.open(DisplayProductComponent,{
-      width:'700px',
-      height:'600px',
+      width:'800px',
+      height:'max-content',
       data:{
        productData:element
      }

@@ -38,4 +38,5 @@ export class AppComponent {
   closeNotification(index){
     this.notifications.splice(index,1);
   }
+
 }

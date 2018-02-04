@@ -3,6 +3,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource, MatPaginator, MatDialog} from '@angular/material';
 import { DisplayProductComponent } from '../display-product/display-product.component';
 import { ProductService } from '../Services/product.service';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'data-table',
@@ -15,9 +17,10 @@ export class TableComponent implements OnInit {
   dataSource;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
-  constructor(private dialog:MatDialog,
-     private basketServe:BasketService,
-     private productServe:ProductService) {
+  constructor(private dialog:MatDialog,private basketServe:BasketService,
+     private productServe:ProductService,
+     private route:ActivatedRoute,
+     private router:Router) {
 
     }
 
@@ -32,23 +35,32 @@ export class TableComponent implements OnInit {
       this.tableData=tableData;
       this.dataSource = new MatTableDataSource<Element>(this.tableData);
       this.dataSource.paginator=this.paginator;
-    });
+      this.filterTable();
+      this.router.events.subscribe(()=>{
+      this.filterTable();
+      });
+   });
   }
 
-  openDialog(){
-    console.log(1);
+  openDialog(element){
+    console.log(element);
     let dialogRef=this.dialog.open(DisplayProductComponent,{
-      width:'550px',
-      height:'500px',
-      data:{name:"Juice" ,
-      price:20.00,
-      description:"Juice...",
-      image:"assets/images/JuiceShop_Logo.png",
-      reviews:[{rev:"Review.....",
-                author:"Aashish"
-      }]
+      width:'800px',
+      height:'max-content',
+      data:{
+       productData:element
      }
     })
+  }
+
+  //To be called on change in route
+  filterTable(){
+    let queryParam:string=this.route.snapshot.queryParams.q;
+      if(queryParam){
+      queryParam=queryParam.trim();
+      queryParam=queryParam.toLowerCase();
+      this.dataSource.filter=queryParam;
+      }
   }
 
 }

@@ -1,5 +1,9 @@
+import { UserService } from './../Services/user.service';
+import { ProductService } from './../Services/product.service';
+import { ProductReviewService } from './../Services/product-review.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-display-product',
@@ -8,18 +12,32 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
 })
 export class DisplayProductComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<DisplayProductComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: any) { }
-
-  ngOnInit() {
-  }
-
-  onSubmit(rev){
-    let review ={
-      rev:rev,
-      author:"User"
+  author:string;
+  reviews$:Observable<any[]>;
+  constructor(private dialogRef: MatDialogRef<DisplayProductComponent>,
+    @Inject(MAT_DIALOG_DATA) private data: any,private productReviewServe:ProductReviewService,
+    private userServe:UserService) {
+      this.data=this.data.productData;
+      this.reviews$=this.productReviewServe.get(this.data.id);
+      this.userServe.whoAmI().subscribe((user:any)=>{
+        console.log(user)
+        if (user && user.email) {
+          this.author = user.email
+        } else {
+          this.author = 'Anonymous'
+        }
+      })
     }
-    this.data.reviews.push(review);
+
+  ngOnInit(){
   }
+
+  addReview(rev){
+      let review={message:rev,author:this.author};
+      this.reviews$=this.reviews$.map((reviewArray)=>{
+        reviewArray.push(review);
+        return reviewArray;
+      });
+    }
 
 }

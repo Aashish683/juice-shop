@@ -18,7 +18,7 @@ export class UserService {
   }
 
   whoAmI(){
-    return this.http.get('http://localhost:3000/rest/user/whoami').map((response:any)=>response.user);
+    return this.http.get('/rest/user/whoami').map((response:any)=>response.user);
   }
 
 }

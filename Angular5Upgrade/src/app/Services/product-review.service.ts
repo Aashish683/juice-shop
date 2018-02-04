@@ -8,6 +8,6 @@ export class ProductReviewService {
   constructor(private http:Http) { }
 
   get(id){
-    return this.http.get('http://localhost:3000'+this.host + '/' + id + '/reviews').map(response=>(response.json()).data);
+    return this.http.get(this.host + '/' + id + '/reviews').map(response=>(response.json()).data);
   }
 }

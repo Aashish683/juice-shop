@@ -61,6 +61,8 @@ export class TableComponent implements OnInit {
       queryParam=queryParam.toLowerCase();
       this.dataSource.filter=queryParam;
       }
+      else
+      this.dataSource.filter="";
   }
 
 }

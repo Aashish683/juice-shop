@@ -1,12 +1,12 @@
-.example-container {
+.table-container {
     display: flex;
     position:relative;
     flex-direction: column;
     max-height: 600px;
     min-width: 800px;
     max-width:842px;
-    transform: translateX(30%);
     margin-top:40px;
+    margin-left: 16.677%;
   }
 
   .mat-table {

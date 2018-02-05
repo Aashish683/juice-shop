@@ -38,11 +38,12 @@ export class NavbarComponent implements OnInit {
   }
 
   onSearch(value:string){
-         this.router.navigate(['/search'],{
-           queryParams:{
-             q:value
-           }
-         });
+         let queryParams;
+         queryParams={queryParams:{q:value}}
+         if(value)
+         this.router.navigate(['/search'],queryParams);
+         else
+         this.router.navigate(['/search']);
   }
 
 }

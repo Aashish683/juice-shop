@@ -5,6 +5,7 @@ import { DisplayProductComponent } from '../display-product/display-product.comp
 import { ProductService } from '../Services/product.service';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'data-table',
@@ -15,34 +16,33 @@ export class TableComponent implements OnInit {
   displayedColumns = ['Image','Product', 'Description', 'Price','Select'];
   tableData:Element[]=[];
   dataSource;
+  productSubscription:Subscription;
+  routerSubscription:Subscription;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private dialog:MatDialog,private basketServe:BasketService,
      private productServe:ProductService,
      private route:ActivatedRoute,
      private router:Router) {
-
     }
 
   ngOnInit() {
-
   }
 
   ngAfterViewInit(){
-
-    this.productServe.search().subscribe((tableData)=> {
+      this.productSubscription = this.productServe.search().subscribe((tableData)=> {
       console.log(tableData);
       this.tableData=tableData;
       this.dataSource = new MatTableDataSource<Element>(this.tableData);
       this.dataSource.paginator=this.paginator;
       this.filterTable();
-      this.router.events.subscribe(()=>{
+      this.routerSubscription = this.router.events.subscribe(()=>{
       this.filterTable();
       });
    });
   }
 
-  openDialog(element){
+   openDialog(element){
     console.log(element);
     let dialogRef=this.dialog.open(DisplayProductComponent,{
       width:'800px',
@@ -61,6 +61,13 @@ export class TableComponent implements OnInit {
       queryParam=queryParam.toLowerCase();
       this.dataSource.filter=queryParam;
       }
+      else
+      this.dataSource.filter="";
+  }
+
+  ngOnDestroy(){
+    this.productSubscription.unsubscribe();
+    this.routerSubscription.unsubscribe();
   }
 
 }
@@ -76,7 +83,7 @@ export interface Element {
   updatedAt:string;
 }
 
-/*const ELEMENT_DATA: Element[] = [
+ /* const ELEMENT_DATA = [
   {image: 1, product: 'Apple Juice', description: '....', price: '2.0'},
   {image: 2, product: 'Mango Juice', description: '....', price: '2.0'},
   {image: 3, product: 'Banana Juice', description: '....', price: '2.0'},
@@ -96,4 +103,4 @@ export interface Element {
   {image: 17, product: 'K Juice', description: '....', price: '2.0'},
   {image: 18, product: 'L Juice', description: '....', price: '2.0'},
   {image: 19, product: 'M Juice', description: '....', price: '2.0'},
-]*/;
+  ];*/

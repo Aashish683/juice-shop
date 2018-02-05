@@ -10,9 +10,7 @@ export class AppComponent {
   applicationName:string = 'OWASP juice shop';
   gitHubRibbon = 'orange';
   notifications=[];
-
   constructor(private confServe:ConfigurationService){
-
   }
 
   ngOnInit(){

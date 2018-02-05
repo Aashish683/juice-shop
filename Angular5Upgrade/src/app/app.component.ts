@@ -10,9 +10,9 @@ export class AppComponent {
   applicationName:string = 'OWASP juice shop';
   gitHubRibbon = 'orange';
   notifications=[];
-
+  width;
   constructor(private confServe:ConfigurationService){
-
+    this.width=screen.width;
   }
 
   ngOnInit(){

@@ -18,7 +18,7 @@
           Languages
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" *ngFor="let language of languages" (click)="switchLang(language)">{{language?.lang}}</a>
+          <a class="dropdown-item" style="cursor:pointer" *ngFor="let language of languages" (click)="switchLang(language)">{{language?.lang}}</a>
         </div>
       </li>
       <li class="nav-item">

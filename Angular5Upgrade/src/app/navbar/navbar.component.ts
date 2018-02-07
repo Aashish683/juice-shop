@@ -4,7 +4,7 @@ import { ConfigurationService } from '../Services/configuration.service';
 import { UserService } from '../Services/user.service';
 import { ChallengeService } from '../Services/challenge.service';
 import { TranslateService } from '@ngx-translate/core';
-import languages from '../../assets/translations/languages';
+import {languages} from '../../assets/i18n/langs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,15 +13,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  langs:string[];
+  languages:any[];
   version:string;
   version$;
   constructor(private adminServe:AdministrationService,private configServe:ConfigurationService,
         private userServe:UserService,private challengeServe:ChallengeService,
-        private translateServe:TranslateService,private router:Router) {
-        translateServe.setDefaultLang('en');
-        this.langs=languages;
-
+        private translate:TranslateService,private router:Router) {
+          this.languages=languages;
        }
 
   ngOnInit() {
@@ -34,7 +32,7 @@ export class NavbarComponent implements OnInit {
 
 
   switchLang(lang){
-        this.translateServe.use(lang);
+        this.translate.use(lang);
   }
 
   onSearch(value:string){

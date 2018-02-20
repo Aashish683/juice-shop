@@ -31,8 +31,8 @@ describe('/rest/basket/:id', () => {
       .expect('status', 200)
       .expect('header', 'content-type', /application\/json/)
       .expect('json', 'data', {id: 1})
-      .then(res => {
-        expect(res.json.data.Products.length).toBe(3)
+      .then(({json}) => {
+        expect(json.data.Products.length).toBe(3)
       })
       .done(done)
   })
@@ -90,10 +90,10 @@ describe('/rest/basket/:id', () => {
       }
     })
       .expect('status', 200)
-      .then(res => frisby.get(REST_URL + '/basket/2', { headers: { 'Authorization': 'Bearer ' + res.json.authentication.token } })
-      .expect('status', 200)
-      .expect('header', 'content-type', /application\/json/)
-      .expect('json', 'data', { id: 2 }))
+      .then(({json}) => frisby.get(REST_URL + '/basket/2', { headers: { 'Authorization': 'Bearer ' + json.authentication.token } })
+        .expect('status', 200)
+        .expect('header', 'content-type', /application\/json/)
+        .expect('json', 'data', { id: 2 }))
       .done(done)
   })
 })
@@ -108,8 +108,8 @@ describe('/rest/basket/:id/checkout', () => {
   it('POST placing an order for an existing basket returns path to an order confirmation PDF', done => {
     frisby.post(REST_URL + '/basket/1/checkout', { headers: authHeader })
       .expect('status', 200)
-      .then(res => {
-        expect(res.json.orderConfirmation).toMatch(/\/ftp\/order_.*\.pdf/)
+      .then(({json}) => {
+        expect(json.orderConfirmation).toMatch(/\/ftp\/order_.*\.pdf/)
       })
       .done(done)
   })
@@ -128,10 +128,10 @@ describe('/rest/basket/:id/checkout', () => {
     })
       .expect('status', 201)
       .then(() => frisby.post(REST_URL + '/basket/3/checkout', { headers: authHeader })
-      .expect('status', 200)
-      .then(res => {
-        expect(res.json.orderConfirmation).toMatch(/\/ftp\/order_.*\.pdf/)
-      }))
+        .expect('status', 200)
+        .then(({json}) => {
+          expect(json.orderConfirmation).toMatch(/\/ftp\/order_.*\.pdf/)
+        }))
       .done(done)
   })
 
@@ -141,10 +141,10 @@ describe('/rest/basket/:id/checkout', () => {
       .expect('header', 'content-type', /application\/json/)
       .expect('json', {discount: 99})
       .then(() => frisby.post(REST_URL + '/basket/2/checkout', { headers: authHeader })
-      .expect('status', 200)
-      .then(res => {
-        expect(res.json.orderConfirmation).toMatch(/\/ftp\/order_.*\.pdf/)
-      }))
+        .expect('status', 200)
+        .then(({json}) => {
+          expect(json.orderConfirmation).toMatch(/\/ftp\/order_.*\.pdf/)
+        }))
       .done(done)
   })
 })

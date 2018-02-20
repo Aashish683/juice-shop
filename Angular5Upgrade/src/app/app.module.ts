@@ -45,6 +45,8 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common/src/common_module';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -150,7 +152,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatCardModule,
     MatCheckboxModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule
   ],
   providers: [AdministrationService,
               ConfigurationService,

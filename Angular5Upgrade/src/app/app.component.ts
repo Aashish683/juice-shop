@@ -1,6 +1,7 @@
 import { ConfigurationService } from './Services/configuration.service';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+
 
 @Component({
   selector: 'app-root',
@@ -8,9 +9,12 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  @Input('sidenavWidth') sideNavWidth: string = '320px';
   applicationName:string = 'OWASP juice shop';
   gitHubRibbon = 'orange';
   notifications=[];
+  theme:string;
   constructor(private confServe:ConfigurationService,private translate:TranslateService){
     this.translate.setDefaultLang('en');
     this.translate.use('en');
@@ -29,7 +33,10 @@ export class AppComponent {
         console.log('Configuration property "application.showGitHubRibbon" is deprecated. Please use "application.gitHubRibbon" instead. See https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part1/customization.html#yaml-configuration-file')
         this.gitHubRibbon = 'none';
       }
+      console.log(confData);
+      this.theme=confData.application.theme;
     });
+    console.log(this.theme);
   }
 
   isLoggedIn(){

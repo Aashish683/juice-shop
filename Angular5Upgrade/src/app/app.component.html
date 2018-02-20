@@ -1,4 +1,4 @@
-<div class="web-container">
+<!--div class="web-container">
 <navbar></navbar>
 <div class="container">
     <div *ngFor="let notification of notifications;index as i" >
@@ -6,5 +6,19 @@
     </div>
 </div>
 <router-outlet></router-outlet>
+</div>
+<a [hidden]="!gitHubRibbon" href="https://github.com/bkimminich/juice-shop"><img style="position: absolute; top: 0; right: 0; border: 0;" [src]="'assets/images/public/images/ribbons/forkme_right_'+gitHubRibbon+'.png'"  alt="Fork me on GitHub"></a-->
+<div [class]="'web-container ' + theme">
+   <mat-sidenav-container fullscreen>
+       <mat-sidenav #sidenav class="td-layout-sidenav"
+       mode="over"
+       [opened]="false"
+       [style.max-width]="sidenavWidth"
+       [style.min-width]="sidenavWidth"
+       [disableClose]="false">
+       </mat-sidenav>
+       <navbar></navbar>
+       <router-outlet></router-outlet>
+   </mat-sidenav-container>
 </div>
 <a [hidden]="!gitHubRibbon" href="https://github.com/bkimminich/juice-shop"><img style="position: absolute; top: 0; right: 0; border: 0;" [src]="'assets/images/public/images/ribbons/forkme_right_'+gitHubRibbon+'.png'"  alt="Fork me on GitHub"></a>

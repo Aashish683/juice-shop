@@ -1,6 +1,8 @@
+import { WindowRefService } from './Services/window-ref.service';
 import { ConfigurationService } from './Services/configuration.service';
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
+import { NgZone } from '@angular/core';
 
 
 @Component({
@@ -9,15 +11,31 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-
-  @Input('sidenavWidth') sideNavWidth: string = '320px';
+  screen:any={};
   applicationName:string = 'OWASP juice shop';
   gitHubRibbon = 'orange';
   notifications=[];
   theme:string;
-  constructor(private confServe:ConfigurationService,private translate:TranslateService){
+  opened:boolean=false;
+  constructor(private confServe:ConfigurationService,private translate:TranslateService,
+    private windowRef:WindowRefService,private ngZone:NgZone){
     this.translate.setDefaultLang('en');
     this.translate.use('en');
+    this.windowRef.nativeWIndow.onresize = (evt)=>{
+        this.screen.width=this.windowRef.nativeWIndow.innerWidth;
+        this.screen.height=this.windowRef.nativeWIndow.innerHeight;
+        console.log(this.screen.width);
+        this.ngZone.run(()=>{
+          this.screen.width=this.windowRef.nativeWIndow.innerWidth;
+          this.screen.height=this.windowRef.nativeWIndow.innerHeight;
+          console.log(this.screen.width);
+          if(this.screen.width<=500)
+            this.opened=true;
+          else
+            this.opened=false;
+
+        });
+    }
   }
 
   ngOnInit(){

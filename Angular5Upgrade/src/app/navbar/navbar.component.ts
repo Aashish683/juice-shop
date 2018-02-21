@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   version:string;
   version$;
   logoSrc:string;
+  envt:string='';
   constructor(private adminServe:AdministrationService,private configServe:ConfigurationService,
         private userServe:UserService,private challengeServe:ChallengeService,
         private translate:TranslateService,private router:Router,
@@ -37,8 +38,8 @@ export class NavbarComponent implements OnInit {
        }
 
   ngOnInit() {
-       this.version$=this.adminServe.getApplicationVersion();
-       this.adminServe.getApplicationVersion().subscribe((versionData:any)=>{
+         this.version$=this.adminServe.getApplicationVersion();
+         this.adminServe.getApplicationVersion().subscribe((versionData:any)=>{
           console.log(versionData);
           this.version='v' + versionData.version;
        })
@@ -56,6 +57,10 @@ export class NavbarComponent implements OnInit {
          this.router.navigate(['/search'],queryParams);
          else
          this.router.navigate(['/search']);
+  }
+
+  test(){
+      this.envt===''?'bodgeit':'';
   }
 
 }

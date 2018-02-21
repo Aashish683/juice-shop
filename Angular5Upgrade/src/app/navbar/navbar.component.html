@@ -53,7 +53,7 @@
                   <input type="text" placeholder="Search.."  #searchControl style="margin-right:10px;" (keyup.enter)="onSearch(searchControl.value)">
                 <button color="accent" style="margin-right:15px;" mat-raised-button (click)="onSearch(searchControl.value)">Search</button>
                 <a class="push-right text-nodecoration" [routerLink]="['/contact']" [routerLinkActive]="['active']">Contact us</a>
-                <a class="push-right text-nodecoration" [routerLink]="['/about']" [routerLinkActive]="['active']">About us</a>
+                <a class="push-right text-nodecoration" [routerLink]="['/about']" [routerLinkActive]="['active']" (click)="test()">About us</a>
             </nav>
         </div>
 </mat-toolbar>

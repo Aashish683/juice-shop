@@ -4,7 +4,6 @@ import { Component, OnInit } from '@angular/core';
 import { ConfigurationService } from '../Services/configuration.service';
 import { UserService } from '../Services/user.service';
 import { ChallengeService } from '../Services/challenge.service';
-import { TranslateService } from '@ngx-translate/core';
 //import {languages} from '../../assets/i18n/langs';
 import { Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material';
@@ -21,8 +20,7 @@ export class NavbarComponent implements OnInit {
   version$;
   logoSrc:string;
   constructor(private adminServe:AdministrationService,private configServe:ConfigurationService,
-        private userServe:UserService,private challengeServe:ChallengeService,
-        private translate:TranslateService,private router:Router,
+        private userServe:UserService,private challengeServe:ChallengeService,private router:Router,
         iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
           this.languages=languages;
           this.configServe.getApplicationConfiguration().subscribe(confData=>{

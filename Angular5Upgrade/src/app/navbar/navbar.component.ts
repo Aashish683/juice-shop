@@ -45,7 +45,7 @@ export class NavbarComponent implements OnInit {
 
 
   switchLang(lang){
-        this.translate.use(lang);
+       // this.translate.use(lang);
   }
 
   onSearch(value:string){

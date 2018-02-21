@@ -134,13 +134,6 @@ import { TranslateLoader } from '@ngx-translate/core';
     ]),
     BrowserModule,
     HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: (createTranslateLoader),
-        deps: [HttpClient]
-      }
-    }),
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,

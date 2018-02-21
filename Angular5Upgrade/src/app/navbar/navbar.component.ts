@@ -5,7 +5,7 @@ import { ConfigurationService } from '../Services/configuration.service';
 import { UserService } from '../Services/user.service';
 import { ChallengeService } from '../Services/challenge.service';
 import { TranslateService } from '@ngx-translate/core';
-import {languages} from '../../assets/i18n/langs';
+//import {languages} from '../../assets/i18n/langs';
 import { Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -66,3 +66,35 @@ function checkLogoName(str:string){
     return true;
   return false;
 }
+
+const languages=[
+  {key:'en',lang:'English'},
+  {key:'ar_SA',lang:'عربى'},
+  {key:'cs_CZ',lang:'Česky'},
+  {key:'da_DK',lang:'Dansk'},
+  {key:'de_DE',lang:'Deutsch'},
+  {key:'el_GR',lang:'Ελληνικά'},
+  {key:'es_ES',lang:'Español'},
+  {key:'et_EE',lang:'Eesti'},
+  {key:'fi_FI',lang:'Suomalainen'},
+  {key:'fr_FR',lang:'Français'},
+  {key:'he_IL',lang:'עברי'},
+  {key:'hu_HU',lang:'Magyar'},
+  {key:'id_ID',lang:'Bahasa Indonesia'},
+  {key:'it_IT',lang:'Italiano'},
+  {key:'ja_JP',lang:'日本の'},
+  {key:'lt_LT',lang:'English'},
+  {key:'lv_LV',lang:'Latvijas'},
+  {key:'my_MM',lang:'မန္မာ'}, //<----Not able to copy for some reason
+  {key:'nl_NL',lang:'Nederlands'},
+  {key:'no_NO',lang:'Norsk'},
+  {key:'pl_PL',lang:'Język Polski'},
+  {key:'pt_PT',lang:'Português'},
+  {key:'ro_RO',lang:'Românesc'},
+  {key:'ru_RU',lang:'Pусский'},
+  {key:'sv_SE',lang:'Svenska'},
+  {key:'tr_TR',lang:'Türkçe'},
+  {key:'ur_PK',lang:'اردو'},
+  {key:'zh_CN',lang:'中文'},
+  {key:'zh_HK',lang:'繁體中文'},
+]

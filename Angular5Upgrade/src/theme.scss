@@ -1,0 +1,104 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://www.google.com/design/spec/style/color.html
+
+$juice-shop-primary: mat-palette($mat-blue-grey, 900);
+$juice-shop-accent:  mat-palette($mat-grey,800);
+// The warn palette is optional (defaults to red).
+$juice-shop-warn:    mat-palette($mat-red);
+// Create the theme object (a Sass map containing all of the palettes).
+$juice-shop-theme: mat-light-theme($juice-shop-primary, $juice-shop-accent, $juice-shop-warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($juice-shop-theme);
+
+$water-primary: mat-palette($mat-grey,50);
+$water-accent:  mat-palette($mat-orange, A200, A100, A400);
+// The warn palette is optional (defaults to red).
+$water-warn:    mat-palette($mat-red);
+$water-theme :mat-light-theme($water-primary,$water-accent,$water-warn);
+//@include angular-material-theme($paper-theme);
+
+
+.water-theme{
+  @include angular-material-theme($water-theme);
+};
+
+$slate-primary: mat-palette($mat-blue-grey,900);
+$slate-accent : mat-palette($mat-grey,800);
+$slate-warn   : mat-palette($mat-red);
+$slate-theme  : mat-light-theme($slate-primary,$slate-accent,$slate-warn);
+
+.slate{
+  mat-sidenav-content{
+    background-color:#37474F;
+  }
+  .custom-slate{
+    box-shadow: 6px 6px 6px 1px rgba(0, 0, 0, .12),
+    6px 6px 6px 1px rgba(0, 0, 0, .12),
+    6px 6px 6px 1px rgba(0, 0, 0, .12);
+  }
+  .mat-card:not([class*=mat-elevation-z]){
+    box-shadow: 6px 6px 6px 1px rgba(0, 0, 0, .12),
+    6px 6px 6px 1px rgba(0, 0, 0, .12),
+    6px 6px 6px 1px rgba(0, 0, 0, .12);
+  }
+
+  nav a.active{
+    color: mat-color($slate-accent);
+    border-bottom: 1px solid mat-color($slate-accent);
+  }
+  @include angular-material-theme($slate-theme);
+}
+
+$paper-primary: mat-palette($mat-grey,50);
+$paper-secondary: mat-palette($mat-blue,500);
+$paper-warn:    mat-palette($mat-red);
+$paper-theme :mat-light-theme($paper-primary,$paper-secondary,$paper-warn);
+
+.paper{
+
+  nav a.active{
+    color: mat-color($paper-secondary);
+    border-bottom: 1px solid mat-color($paper-secondary);
+  }
+  @include angular-material-theme($paper-theme);
+}
+//$juice-shop-input-primary: mat-palette($mat-blue,900);
+//$juice-shop-input-theme: mat-light-theme($juice-shop-input-primary,$juice-shop-accent,$juice-shop-warn);
+//@include mat-core-theme($juice-shop-input-theme);
+//@include mat-input-theme($juice-shop-input-theme);
+
+nav {
+    a {
+      line-height:3.8;
+      display: block;
+      &:not(.active) {
+        color: rgba(255, 255, 255, 0.56);
+      }
+      height: 68px;
+    }
+
+  }
+
+
+  /**
+  should create a custom css class for box-shadow when the dark theme is present like in default
+  on card (elevated) elements
+  .custom{
+    box-shadow: 6px 6px 6px 1px rgba(0, 0, 0, .12),
+    6px 6px 6px 1px rgba(0, 0, 0, .12),
+    6px 6px 6px 1px rgba(0, 0, 0, .12);
+  }
+  **/

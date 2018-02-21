@@ -1,3 +1,4 @@
+import { TestService } from './Services/test.service';
 import { ProductReviewService } from './Services/product-review.service';
 import { ProductService } from './Services/product.service';
 import { BasketService } from './Services/basket.service';
@@ -27,6 +28,7 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UserService } from './Services/user.service';
 import { TableComponent } from './table/table.component';
+import {TranslateModule} from '@ngx-translate/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -43,6 +45,9 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common/src/common_module';
 import {MatSelectModule} from '@angular/material/select';
+import {MatSidenavModule} from '@angular/material/sidenav';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { TranslateLoader } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [
@@ -129,6 +134,13 @@ import {MatSelectModule} from '@angular/material/select';
     ]),
     BrowserModule,
     HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [HttpClient]
+      }
+    }),
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
@@ -141,7 +153,10 @@ import {MatSelectModule} from '@angular/material/select';
     MatCardModule,
     MatCheckboxModule,
     MatToolbarModule,
-    MatSelectModule
+    MatSelectModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatProgressSpinnerModule
   ],
   providers: [AdministrationService,
               ConfigurationService,
@@ -151,7 +166,8 @@ import {MatSelectModule} from '@angular/material/select';
               SecurityQuestionService,
               BasketService,
               ProductService,
-              ProductReviewService],
+              ProductReviewService,
+              TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,4 +1,13 @@
 .web-container{
     width: 100%;
     margin: auto auto;
+    z-index:1;
+}
+
+a img{
+    z-index:2;
+}
+
+mat-sidenav{
+    width:290px;
 }

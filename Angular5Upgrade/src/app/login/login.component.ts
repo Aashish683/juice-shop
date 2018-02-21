@@ -65,7 +65,7 @@ export class LoginComponent implements OnInit {
   if(this.rememberMe)
     localStorage.setItem('email',this.user.email);
   else
-    localStorage.remove$scope.Item('email');
+    localStorage.removeItem('email');
   }
 
 

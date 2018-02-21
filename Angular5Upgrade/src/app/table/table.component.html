@@ -1,4 +1,4 @@
-<div class="table-container mat-elevation-z8">
+<div class="table-container mat-elevation-z8 custom-slate">
   <mat-table #table [dataSource]="dataSource">
     <ng-container matColumnDef="Image">
       <mat-header-cell *matHeaderCellDef> Image </mat-header-cell>
@@ -31,10 +31,12 @@
 
     <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
     <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+
   </mat-table>
 
   <mat-paginator #paginator
   [pageSize]="10"
   [pageSizeOptions]="[5, 10,20]">
   </mat-paginator>
+
 </div>

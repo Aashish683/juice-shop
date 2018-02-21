@@ -1,4 +1,4 @@
-<nav class="navbar navbar-dark bg-dark navbar-expand-lg">
+<!--nav class="navbar navbar-dark bg-dark navbar-expand-lg">
   <a class="navbar-brand" href="#">
     <img src="https://juice-shop-deploy.herokuapp.com/public/images/JuiceShop_Logo.png">
   </a>
@@ -14,11 +14,11 @@
         <a class="nav-link" *ngIf="!userServe.isLoggedIn" routerLink="/login">Login<span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" style="cursor:pointer" id="navbardrop" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" style="cursor:pointer" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Languages
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item"></a>
+          <a class="dropdown-item" style="cursor:pointer" *ngFor="let language of languages" (click)="switchLang(language)">{{language?.lang}}</a>
         </div>
       </li>
       <li class="nav-item">
@@ -35,4 +35,33 @@
       </li>
     </ul>
 
-</nav>
+</nav-->
+
+<mat-toolbar class="mat-elevation-z6" color="primary">
+        <span style="display:flex">
+              <mat-icon class="mat-icon-logo" svgIcon="juice-shop-logo">
+                <img style="height: 40px;width: 50px;" [src]="logoSrc">
+              </mat-icon>
+              <a style="font-size:small" routerLink="/search">OWASP Juice Shop {{version}}</a>
+        </span>
+        <span flex style="flex:0.3"></span>
+        <div layout="row" layout-align="end center" flex>
+            <nav style="display:flex" hide-xs hide-sm class="route-nav text-upper text-sm" layout="row">
+                <a style="margin-right:40px" class="push-right text-nodecoration" [routerLink]="['/login']" [routerLinkActive]="['active']">Login</a>
+                <!--a class="push-right text-nodecoration language" [routerLink]="['/c']" [routerLinkActive]="['active']">Language</a>
+                <!--a class="push-right text-nodecoration" [routerLink]="['/search']" [routerLinkActive]="['active']">Search</a-->
+                <mat-form-field class="language-select">
+                  <mat-select style="color:rgba(255, 255, 255, 0.56)" value="English">
+                    <mat-option *ngFor="let language of languages" [value]="language.lang">{{language?.lang}}</mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <!--select placeholder="Language">
+                  <option *ngFor="let language of languages" [value]="language.lang">{{language?.lang}}</option>
+                </select-->
+                  <input type="text" placeholder="Search.."  #searchControl style="margin-right:10px;" (keyup.enter)="onSearch(searchControl.value)">
+                <button color="accent" style="margin-right:15px;margin-top: 15px;margin-bottom: 16px;" mat-raised-button (click)="onSearch(searchControl.value)">Search</button>
+                <a class="push-right text-nodecoration" [routerLink]="['/contact']" [routerLinkActive]="['active']">Contact us</a>
+                <a class="push-right text-nodecoration" [routerLink]="['/about']" [routerLinkActive]="['active']">About us</a>
+            </nav>
+        </div>
+</mat-toolbar>

@@ -150,7 +150,7 @@ function createChallenges () {
     name: 'Five-Star Feedback',
     category: 'Privilege Escalation',
     description: 'Get rid of all 5-star customer feedback.',
-    difficulty: 1,
+    difficulty: 2,
     hint: addHint('Once you found admin section of the application, this challenge is almost trivial.'),
     hintUrl: addHint('https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/privilege-escalation.html#get-rid-of-all-5-star-customer-feedback'),
     solved: false
@@ -450,9 +450,20 @@ function createChallenges () {
     challenges.loginSupportChallenge = challenge
   })
   models.Challenge.create({
+    name: 'Login MC SafeSearch',
+    category: 'Weak Security Mechanisms',
+    description: 'Log in with MC SafeSearch\'s original user credentials without applying SQL Injection or any other bypass.',
+    difficulty: 2,
+    hint: addHint('You should listen to MC\'s hit song "Protect Ya Passwordz".'),
+    hintUrl: addHint('https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/weak-security.html#log-in-with-mc-safesearchs-original-user-credentials'),
+    solved: false
+  }).then(challenge => {
+    challenges.loginRapperChallenge = challenge
+  })
+  models.Challenge.create({
     name: 'Premium Paywall',
     category: 'Cryptographic Issues',
-    description: '<i class="far fa-gem"></i><i class="far fa-gem"></i><i class="far fa-gem"></i><i class="far fa-gem"></i><i class="far fa-gem"></i><!--i0ycvJyZ+WoHTEIjAatNFK5A8r8GxRbwOLC2OuXHVsZcKkEc3lRgc58KjEKn2Byj8Fg3A3ai5yahQANdWL/5j5k3E3qHTjm93tuenE0YlauCdy+7tGkFvo5OltIhiXSWt1SiICecyghFZ8ca/aKtHQ==--> <a href="/redirect?to=https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm" target="_blank" class="btn btn-danger btn-xs"><i class="fab fa-btc fa-sm"></i> Unlock Premium Challenge</a> to access exclusive content.',
+    description: '<i class="far fa-gem"></i><i class="far fa-gem"></i><i class="far fa-gem"></i><i class="far fa-gem"></i><i class="far fa-gem"></i><!--IvLuRfBJYlmStf9XfL6ckJFngyd9LfV1JaaN/KRTPQPidTuJ7FR+D/nkWJUF+0xUF07CeCeqYfxq+OJVVa0gNbqgYkUNvn//UbE7e95C+6e+7GtdpqJ8mqm4WcPvUGIUxmGLTTAC2+G9UuFCD1DUjg==--> <a href="/redirect?to=https://blockchain.info/address/1AbKfgvw9psQ41NbLi8kufDQTezwG8DRZm" target="_blank" class="btn btn-danger btn-xs"><i class="fab fa-btc fa-sm"></i> Unlock Premium Challenge</a> to access exclusive content.',
     difficulty: 6,
     hint: addHint('You do not have to pay anything to unlock this challenge! Nonetheless, donations are very much appreciated.'),
     hintUrl: addHint('https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/crypto.html#unlock-premium-challenge-to-access-exclusive-content'),
@@ -481,6 +492,17 @@ function createChallenges () {
     solved: false
   }).then(challenge => {
     challenges.resetPasswordBenderChallenge = challenge
+  })
+  models.Challenge.create({
+    name: 'Reset Morty\'s Password',
+    category: 'Brute Force',
+    description: 'Reset Morty\'s password via the <a href="/#/forgot-password">Forgot Password</a> mechanism by bruteforcing the original answer to his security question.',
+    difficulty: 5,
+    hint: addHint('Find a way to bypass Rate Limiting and write a script to bruteforce the answer to Morty\'s security question.'),
+    hintUrl: addHint('https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part2/brute-force.html#reset-mortys-password-via-the-forgot-password-mechanism'),
+    solved: false
+  }).then(challenge => {
+    challenges.resetPasswordMortyChallenge = challenge
   })
   models.Challenge.create({
     name: 'Reset Bjoern\'s Password',
@@ -701,6 +723,18 @@ function createUsers () {
   }).then(user => {
     users.support = user
   })
+  models.User.create({
+    email: 'morty@' + config.get('application.domain'),
+    password: 'focusOnScienceMorty!focusOnScience'
+  }).then(user => {
+    users.morty = user
+  })
+  models.User.create({
+    email: 'mc.safesearch@' + config.get('application.domain'),
+    password: 'Mr. N00dles'
+  }).then(user => {
+    users.rapper = user
+  })
 }
 
 function createRandomFakeUsers () {
@@ -727,11 +761,11 @@ function makeRandomString (length) {
 }
 
 function createProducts () {
-  function softDeleteIfConfigured (product) {
+  function softDeleteIfConfigured ({name, id}) {
     for (const configuredProduct of config.get('products')) {
-      if (product.name === configuredProduct.name) {
+      if (name === configuredProduct.name) {
         if (configuredProduct.deletedDate) {
-          models.sequelize.query('UPDATE Products SET deletedAt = \'' + configuredProduct.deletedDate + '\' WHERE id = ' + product.id)
+          models.sequelize.query('UPDATE Products SET deletedAt = \'' + configuredProduct.deletedDate + '\' WHERE id = ' + id)
         }
         break
       }
@@ -767,10 +801,10 @@ function createProducts () {
       utils.downloadToFile(imageUrl, 'app/public/images/products/' + image)
     }
     models.Product.create({
-      name: name,
-      description: description,
-      price: price,
-      image: image
+      name,
+      description,
+      price,
+      image
     }).then(product => {
       softDeleteIfConfigured(product)
       if (product.description.match(/Seasonal special offer! Limited availability!/)) {
@@ -791,18 +825,18 @@ function createProducts () {
         }
       }
       return product
-    }).then(product => {
+    }).then(({id}) => {
       if (reviews) {
         return Promise.all(
           reviews
-          .map((review) => {
-            review.message = review.text
-            review.author = review.author + '@' + config.get('application.domain')
-            review.product = product.id
-            return review
-          }).map((review) => {
-            return mongodb.reviews.insert(review)
-          })
+            .map((review) => {
+              review.message = review.text
+              review.author = review.author + '@' + config.get('application.domain')
+              review.product = id
+              return review
+            }).map((review) => {
+              return mongodb.reviews.insert(review)
+            })
         )
       }
     })
@@ -960,5 +994,10 @@ function createSecurityAnswers () {
     SecurityQuestionId: 10,
     UserId: 6,
     answer: 'SC OLEA SRL' // http://www.olea.com.ro/
+  })
+  models.SecurityAnswer.create({
+    SecurityQuestionId: 1,
+    UserId: 7,
+    answer: 'JeRRy' // bruteforcible/
   })
 }

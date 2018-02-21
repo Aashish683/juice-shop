@@ -9,6 +9,51 @@ a.dropdown-item{
   height:25px;
 }
 
-nav a:nth-child(2){
-  font-size:13px;
+mat-icon.mat-icon-logo{
+  height: 40px;
+  width: 50px;
+}
+
+.route-nav a{
+  margin-right: 70px;
+  color: #c8c8c8;
+}
+
+.route-nav a.language{
+  margin-right:40px;
+}
+
+
+nav a:hover{
+  text-decoration: none;
+}
+
+nav input{
+  border: none;
+  outline: none;
+  color:#c8c8c8;
+  background-color: inherit;
+  margin-top: 6px;
+  margin-right: 10px;
+  height: 62px;
+}
+nav input:focus{
+  border-bottom:0.5px solid #a3a3a3;
+}
+
+.mat-select-trigger{
+  margin-top:3px;
+}
+
+::ng-deep .language-select .mat-input-underline{
+  opacity: 0;
+}
+
+mat-form-field{
+  margin-right: 46px;
+  margin-top: 2.4px;
+}
+
+::ng-deep .language-select .mat-select-value-text{
+  color: rgba(255, 255, 255, 0.56);
 }

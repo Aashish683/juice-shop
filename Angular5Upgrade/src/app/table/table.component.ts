@@ -1,3 +1,4 @@
+import { TestService } from './../Services/test.service';
 import { BasketService } from './../Services/basket.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource, MatPaginator, MatDialog} from '@angular/material';
@@ -18,12 +19,14 @@ export class TableComponent implements OnInit {
   dataSource;
   productSubscription:Subscription;
   routerSubscription:Subscription;
+  searchValue:string;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   constructor(private dialog:MatDialog,private basketServe:BasketService,
      private productServe:ProductService,
      private route:ActivatedRoute,
-     private router:Router) {
+     private router:Router,
+     private testServe:TestService) {
     }
 
   ngOnInit() {
@@ -57,12 +60,15 @@ export class TableComponent implements OnInit {
   filterTable(){
     let queryParam:string=this.route.snapshot.queryParams.q;
       if(queryParam){
+      this.searchValue="Search for -"+queryParam;
       queryParam=queryParam.trim();
       queryParam=queryParam.toLowerCase();
       this.dataSource.filter=queryParam;
       }
-      else
+      else{
+      this.searchValue="All Products"
       this.dataSource.filter="";
+      }
   }
 
   ngOnDestroy(){

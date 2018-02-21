@@ -1,4 +1,4 @@
-<div class="web-container">
+<!--div class="web-container">
 <navbar></navbar>
 <div class="container">
     <div *ngFor="let notification of notifications;index as i" >
@@ -7,7 +7,19 @@
 </div>
 <router-outlet></router-outlet>
 </div>
-<a [hidden]="!gitHubRibbon" href="https://github.com/bkimminich/juice-shop">
-    <img style="position: absolute; top: 0; right: 0; border: 0;"
-    [src]="'https://juice-shop-deploy.herokuapp.com/public/images/ribbons/forkme_right_'+gitHubRibbon+'.png'"
-    alt="Fork me on GitHub"></a>
+<a [hidden]="!gitHubRibbon" href="https://github.com/bkimminich/juice-shop"><img style="position: absolute; top: 0; right: 0; border: 0;" [src]="'assets/images/public/images/ribbons/forkme_right_'+gitHubRibbon+'.png'"  alt="Fork me on GitHub"></a-->
+<div [class]="'web-container ' + theme">
+   <mat-sidenav-container fullscreen>
+       <mat-sidenav #sidenav
+       mode="side"
+       [opened]="opened"
+       [disableClose]="false">
+       <mat-toolbar color="primary">Aaa</mat-toolbar>
+       </mat-sidenav>
+       <navbar></navbar>
+       <router-outlet></router-outlet>
+   </mat-sidenav-container>
+</div>
+<!-->Temporarily disabling ribbon redirect<-->
+<a [hidden]="!gitHubRibbon" href="https://github.com/bkimminich/juice-shop"><img style="position: absolute; top: 0; right: 0; border: 0;" [src]="'assets/images/public/images/ribbons/forkme_right_'+gitHubRibbon+'.png'"  alt="Fork me on GitHub"></a>
+<!--a [hidden]="!gitHubRibbon"><img (click)="test()" style="cursor:pointer;position: absolute; top: 0; right: 0; border: 0;" [src]="'assets/images/public/images/ribbons/forkme_right_'+gitHubRibbon+'.png'"  alt="Fork me on GitHub"></a-->

@@ -208,6 +208,8 @@ for (const modelName of autoModels) {
   })
 }
 
+app.get('/rest/test',changeEnvt())
+
 // routes for the NoSql parts of the application
 app.get('/rest/product/:id/reviews', showProductReviews())
 app.put('/rest/product/:id/reviews', createProductReviews())
@@ -357,6 +359,12 @@ function replaceThreeJsTitleTag (threeJsTitleTag) {
     recursive: false,
     silent: true
   })
+}
+
+function changeEnvt(){
+  if(process.env.NODE_ENV==='')
+  process.env.NODE_ENV='bodgeit'
+  process.env.NODE_ENV='';
 }
 
 exports.close = function (exitCode) {

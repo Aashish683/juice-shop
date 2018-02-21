@@ -28,7 +28,6 @@ import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UserService } from './Services/user.service';
 import { TableComponent } from './table/table.component';
-import {TranslateModule} from '@ngx-translate/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {RouterModule} from '@angular/router';
 import {MatPaginatorModule} from '@angular/material/paginator';
@@ -47,7 +46,6 @@ import { CommonModule } from '@angular/common/src/common_module';
 import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-import { TranslateLoader } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [

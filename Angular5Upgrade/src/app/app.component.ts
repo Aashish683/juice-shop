@@ -1,7 +1,6 @@
 import { WindowRefService } from './Services/window-ref.service';
 import { ConfigurationService } from './Services/configuration.service';
 import { Component, Output } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { NgZone } from '@angular/core';
 import { TestService } from './Services/test.service';
 
@@ -17,11 +16,9 @@ export class AppComponent {
   notifications=[];
   theme:string;
   opened:boolean=false;
-  constructor(private confServe:ConfigurationService,private translate:TranslateService,
+  constructor(private confServe:ConfigurationService,
     private windowRef:WindowRefService,private ngZone:NgZone,
     private testServe:TestService){
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
     this.windowRef.nativeWIndow.onresize = (evt)=>{
         this.screen.width=this.windowRef.nativeWIndow.innerWidth;
         this.screen.height=this.windowRef.nativeWIndow.innerHeight;

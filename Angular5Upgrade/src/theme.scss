@@ -82,11 +82,12 @@ $paper-theme :mat-light-theme($paper-primary,$paper-secondary,$paper-warn);
 
 nav {
     a {
-      line-height: 2.5;
+      line-height:3.8;
       display: block;
       &:not(.active) {
         color: rgba(255, 255, 255, 0.56);
       }
+      height: 68px;
     }
 
   }

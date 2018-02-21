@@ -1,7 +1,7 @@
+import { TestService } from './Services/test.service';
 import { ProductReviewService } from './Services/product-review.service';
 import { ProductService } from './Services/product.service';
 import { BasketService } from './Services/basket.service';
-import {TestService} from './Services/test.service';
 import { SecurityQuestionService } from './Services/security-question.service';
 import { WindowRefService } from './Services/window-ref.service';
 import { RecycleComponent } from './recycle/recycle.component';

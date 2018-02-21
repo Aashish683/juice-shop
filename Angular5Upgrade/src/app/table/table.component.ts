@@ -1,3 +1,4 @@
+import { TestService } from './../Services/test.service';
 import { BasketService } from './../Services/basket.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource, MatPaginator, MatDialog} from '@angular/material';
@@ -24,7 +25,8 @@ export class TableComponent implements OnInit {
   constructor(private dialog:MatDialog,private basketServe:BasketService,
      private productServe:ProductService,
      private route:ActivatedRoute,
-     private router:Router) {
+     private router:Router,
+     private testServe:TestService) {
     }
 
   ngOnInit() {

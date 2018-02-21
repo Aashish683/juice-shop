@@ -1,5 +1,4 @@
 import { WindowRefService } from './../Services/window-ref.service';
-import { TestService } from './../Services/test.service';
 import { AdministrationService } from './../Services/administration.service';
 import { Component, OnInit } from '@angular/core';
 import { ConfigurationService } from '../Services/configuration.service';
@@ -24,8 +23,7 @@ export class NavbarComponent implements OnInit {
   constructor(private adminServe:AdministrationService,private configServe:ConfigurationService,
         private userServe:UserService,private challengeServe:ChallengeService,
         private translate:TranslateService,private router:Router,
-        iconRegistry: MatIconRegistry, sanitizer: DomSanitizer,
-        private testServe:TestService,private windowRef:WindowRefService) {
+        iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
           this.languages=languages;
           this.configServe.getApplicationConfiguration().subscribe(confData=>{
             let str=confData.application.logo;
@@ -59,12 +57,6 @@ export class NavbarComponent implements OnInit {
          this.router.navigate(['/search'],queryParams);
          else
          this.router.navigate(['/search']);
-  }
-
-  test(){
-    this.testServe.changEnvt().subscribe((resp)=>{
-      this.windowRef.nativeWIndow.location.reload();
-    },(err)=>console.log(err));
   }
 
 }

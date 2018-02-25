@@ -57,3 +57,7 @@ mat-form-field{
 ::ng-deep .language-select .mat-select-value-text{
   color: rgba(255, 255, 255, 0.56);
 }
+
+::ng-deep .paper .language-select .mat-select-value-text{
+  color: #c8c8c8;
+}

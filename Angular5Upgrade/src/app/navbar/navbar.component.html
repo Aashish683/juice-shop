@@ -44,14 +44,14 @@
               </mat-icon>
               <a style="font-size:small" routerLink="/search">OWASP Juice Shop {{version}}</a>
         </span>
-        <span flex style="flex:0.3"></span>
+        <span flex style="flex:1.3"></span>
         <div layout="row" layout-align="end center" flex>
             <nav style="display:flex" hide-xs hide-sm class="route-nav text-upper text-sm" layout="row">
                 <a style="margin-right:40px" class="push-right text-nodecoration" [routerLink]="['/login']" [routerLinkActive]="['active']">Login</a>
                 <!--a class="push-right text-nodecoration language" [routerLink]="['/c']" [routerLinkActive]="['active']">Language</a>
                 <!--a class="push-right text-nodecoration" [routerLink]="['/search']" [routerLinkActive]="['active']">Search</a-->
                 <mat-form-field class="language-select">
-                  <mat-select style="color:rgba(255, 255, 255, 0.56)" value="English">
+                  <mat-select value="English">
                     <mat-option *ngFor="let language of languages" [value]="language.lang">{{language?.lang}}</mat-option>
                   </mat-select>
                 </mat-form-field>

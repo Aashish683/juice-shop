@@ -74,6 +74,7 @@ $paper-theme :mat-light-theme($paper-primary,$paper-secondary,$paper-warn);
     border-bottom: 1px solid mat-color($paper-secondary);
   }
   @include angular-material-theme($paper-theme);
+
 }
 //$juice-shop-input-primary: mat-palette($mat-blue,900);
 //$juice-shop-input-theme: mat-light-theme($juice-shop-input-primary,$juice-shop-accent,$juice-shop-warn);

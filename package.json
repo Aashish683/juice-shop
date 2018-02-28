@@ -142,7 +142,7 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "cd Angular5Upgrade && npm install && ng build",
-    "start": "node app",
+    "start": "cd Angular5Upgrade && ng build && cd .. && node app",
     "test": "standard && karma start karma.conf.js && nyc --report-dir=./build/reports/coverage/server-tests mocha test/server",
     "frisby": "nyc --report-dir=./build/reports/coverage/api-tests node ./test/apiTests.js",
     "preupdate-webdriver": "npm install",

@@ -18,7 +18,7 @@ export class DisplayProductComponent implements OnInit {
   reviews$:Observable<any[]>;
   userSubscription:Subscription;
   constructor(private dialogRef: MatDialogRef<DisplayProductComponent>,
-    @Inject(MAT_DIALOG_DATA) private data: any,private productReviewServe:ProductReviewService,
+    @Inject(MAT_DIALOG_DATA) public data: any,private productReviewServe:ProductReviewService,
     private userServe:UserService) {
       this.data=this.data.productData;
       this.reviews$=this.productReviewServe.get(this.data.id);

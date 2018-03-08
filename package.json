@@ -148,6 +148,7 @@
     "stryker": "stryker run stryker.client-conf.js",
     "vagrant": "cd vagrant && vagrant up",
     "setup-hooks": "ln -s ./pre-push.sh .git/hooks/pre-commit"
+
   },
   "engines": {
     "node": ">=6 <=9"

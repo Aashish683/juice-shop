@@ -71,6 +71,6 @@ angular.module('juiceShop').config(['$routeProvider', function ($routeProvider) 
     controller: 'OAuthController'
   })
 
-    /* default route */
+  /* default route */
   $routeProvider.otherwise({redirectTo: '/search'})
 }])

@@ -137,7 +137,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "postinstall": "npm --prefix ./app install ./app && grunt minify && ln -s ./pre-push.sh .git/hooks/pre-commit",
+    "postinstall": "npm --prefix ./app install ./app && grunt minify",
     "start": "node app",
     "test": "standard && karma start karma.conf.js && nyc --report-dir=./build/reports/coverage/server-tests mocha test/server",
     "frisby": "nyc --report-dir=./build/reports/coverage/api-tests node ./test/apiTests.js",
@@ -146,7 +146,8 @@
     "preprotractor": "npm run update-webdriver",
     "protractor": "node test/e2eTests.js",
     "stryker": "stryker run stryker.client-conf.js",
-    "vagrant": "cd vagrant && vagrant up"
+    "vagrant": "cd vagrant && vagrant up",
+    "setup-hooks": "ln -s ./pre-push.sh .git/hooks/pre-push"
   },
   "engines": {
     "node": ">=6 <=9"

@@ -146,7 +146,8 @@
     "preprotractor": "npm run update-webdriver",
     "protractor": "node test/e2eTests.js",
     "stryker": "stryker run stryker.client-conf.js",
-    "vagrant": "cd vagrant && vagrant up"
+    "vagrant": "cd vagrant && vagrant up",
+    "setup-hooks": "ln -s hooks/pre-commit .git/hooks/pre-commit"
   },
   "engines": {
     "node": ">=6 <=9"

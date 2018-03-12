@@ -138,6 +138,8 @@
   },
   "license": "MIT",
   "scripts": {
+    "precommit": "npm test",
+    "prepush": "npm test",
     "postinstall": "npm --prefix ./app install ./app && grunt minify",
     "start": "node app",
     "test": "standard && karma start karma.conf.js && nyc --report-dir=./build/reports/coverage/server-tests mocha test/server",
@@ -195,11 +197,5 @@
       "sanitize-html",
       "express-jwt"
     ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test",
-      "pre-push": "npm test"
-    }
   }
 }

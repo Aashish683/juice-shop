@@ -98,6 +98,7 @@
     "frisby": "~2.0",
     "grunt-cli": "~1.2",
     "http-server": "~0.11.1",
+    "husky": "^0.15.0-rc.8",
     "jasmine": "~2.9",
     "jasmine-reporters": "~2.3",
     "jest": "~22.1",
@@ -194,5 +195,11 @@
       "sanitize-html",
       "express-jwt"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test"
+    }
   }
 }

@@ -138,7 +138,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "precommit": "npm test",
     "prepush": "npm test",
     "postinstall": "npm --prefix ./app install ./app && grunt minify",
     "start": "node app",

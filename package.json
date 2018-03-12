@@ -147,7 +147,7 @@
     "protractor": "node test/e2eTests.js",
     "stryker": "stryker run stryker.client-conf.js",
     "vagrant": "cd vagrant && vagrant up",
-    "setup-hooks": "ln -s hooks/pre-commit .git/hooks/pre-push"
+    "setup-hooks": "ln -s ../../hooks/pre-commit .git/hooks/pre-push"
   },
   "engines": {
     "node": ">=6 <=9"

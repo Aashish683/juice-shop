@@ -1,2 +1,2 @@
-angular.module('juiceShop').controller('AboutController', [
+angular.module('juiceShop').controller('AboutController',  [
   function () {}])

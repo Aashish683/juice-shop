@@ -55,7 +55,6 @@ export class AppComponent {
       console.log(confData);
       this.theme=confData.application.theme;
     });
-    console.log(this.theme);
   }
 
   isLoggedIn(){
@@ -67,8 +66,7 @@ export class AppComponent {
   }
 
   test(){
-    this.testServe.testConfiguration().subscribe((confData)=>{
-      console.log(confData);
+    this.testServe.testConfiguration().subscribe((confData:any)=>{
       if (confData && confData.application && confData.application.name !== null) {
         this.applicationName = confData.application.name
       }
@@ -80,9 +78,7 @@ export class AppComponent {
         console.log('Configuration property "application.showGitHubRibbon" is deprecated. Please use "application.gitHubRibbon" instead. See https://bkimminich.gitbooks.io/pwning-owasp-juice-shop/content/part1/customization.html#yaml-configuration-file')
         this.gitHubRibbon = 'none';
       }
-      console.log(confData);
       this.theme=confData.application.theme;
     });
-    console.log(this.theme);
   }
 }

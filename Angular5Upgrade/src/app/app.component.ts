@@ -64,7 +64,7 @@ export class AppComponent {
   }
 
   test(){
-    this.testServe.testConfiguration().subscribe((confData)=>{
+    this.testServe.testConfiguration().subscribe((confData:any)=>{
       console.log(confData);
       if (confData && confData.application && confData.application.name !== null) {
         this.applicationName = confData.application.name

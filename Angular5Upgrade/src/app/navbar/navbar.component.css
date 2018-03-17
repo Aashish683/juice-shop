@@ -15,12 +15,11 @@ mat-icon.mat-icon-logo{
 }
 
 .route-nav a{
-  margin-right: 70px;
+  margin-right: 87px;
   color: #c8c8c8;
 }
 
 .route-nav a.language{
-  margin-right:40px;
 }
 
 
@@ -49,7 +48,8 @@ nav input:focus{
   opacity: 0;
 }
 
-mat-form-field{
+mat-form-field.language-select{
+  width:115px;
   margin-right: 46px;
   margin-top: 2.4px;
 }

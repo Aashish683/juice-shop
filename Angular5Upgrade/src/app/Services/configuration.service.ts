@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/observable/from';
+
 @Injectable()
 export class ConfigurationService {
   host = '/rest/admin';

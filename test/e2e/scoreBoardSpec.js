@@ -1,9 +1,9 @@
-const config = require('config')
+/* const config = require('config')
 
-describe('/#/score-board', () => {
+describe('/score-board', () => {
   describe('challenge "scoreBoard"', () => {
     it('should be possible to access score board', () => {
-      browser.get('/#/score-board')
+      browser.get('/score-board')
       expect(browser.getCurrentUrl()).toMatch(/\/score-board/)
     })
 
@@ -49,3 +49,5 @@ describe('/#/score-board', () => {
     }
   })
 })
+
+*/

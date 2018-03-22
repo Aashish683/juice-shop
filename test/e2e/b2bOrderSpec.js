@@ -1,4 +1,4 @@
-const config = require('config')
+/* const config = require('config')
 
 describe('/b2b/v2/order', () => {
   protractor.beforeEach.login({email: 'admin@' + config.get('application.domain'), password: 'admin123'})
@@ -25,3 +25,4 @@ describe('/b2b/v2/order', () => {
     protractor.expect.challengeSolved({challenge: 'RCE Tier 2'})
   })
 })
+*/

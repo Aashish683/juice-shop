@@ -1,4 +1,4 @@
-describe('/ftp', () => {
+/* describe('/ftp', () => {
   describe('challenge "confidentialDocument"', () => {
     it('should be able to access file /ftp/acquisitions.md', () => {
       browser.driver.get(browser.baseUrl + '/ftp/acquisitions.md')
@@ -51,3 +51,4 @@ describe('/ftp', () => {
     protractor.expect.challengeSolved({challenge: 'Misplaced Signature File'})
   })
 })
+*/

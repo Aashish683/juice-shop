@@ -1,4 +1,4 @@
-const config = require('config')
+/* const config = require('config')
 
 describe('/#/contact', () => {
   let comment, rating, submitButton
@@ -147,3 +147,4 @@ function expectPersistedCommentToMatch (expectation) {
   const feedbackComments = element.all(by.repeater('feedback in feedbacks').column('comment'))
   expect(feedbackComments.last().getText()).toMatch(expectation)
 }
+ */

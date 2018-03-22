@@ -5,7 +5,7 @@ export class WindowRefService {
 
   constructor() { }
 
-  get nativeWIndow():any{
+  get nativeWindow():any{
     return getWindow();
   }
 }

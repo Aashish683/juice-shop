@@ -1,4 +1,4 @@
-const insecurity = require('../../lib/insecurity')
+/* const insecurity = require('../../lib/insecurity')
 const config = require('config')
 
 describe('/#/basket', () => {
@@ -65,3 +65,4 @@ describe('/#/basket', () => {
     })
   })
 })
+*/

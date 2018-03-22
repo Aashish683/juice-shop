@@ -1,4 +1,4 @@
-describe('/redirect', () => {
+/* describe('/redirect', () => {
   describe('challenge "redirect"', () => {
     it('should show error page when supplying an unrecognized target URL', () => {
       browser.driver.get(browser.baseUrl + '/redirect?to=http://kimminich.de').then(() => {
@@ -25,3 +25,5 @@ describe('/redirect', () => {
     protractor.expect.challengeSolved({challenge: 'Redirects Tier 1'})
   })
 })
+
+*/

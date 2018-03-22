@@ -4,7 +4,7 @@
     <div style="color:red">{{error?.error}}</div>
     <mat-form-field>
         <mat-label>Email</mat-label>
-        <input #email name="email"
+        <input id="email" #email name="email"
          [formControl]="emailControl"
          (focus)="this.error=null"
          matInput placeholder="Email">
@@ -12,7 +12,7 @@
       </mat-form-field>
       <mat-form-field>
         <mat-label>Password</mat-label>
-        <input #password name="password"
+        <input id="password" #password name="password"
         [formControl]="passwordControl"
         (focus)="this.error=null"
         matInput placeholder="Password" [type]="hide ? 'password' : 'text'">
@@ -20,7 +20,7 @@
         <mat-error *ngIf="passwordControl.invalid">Password is Required</mat-error>
       </mat-form-field>
       <div class="button-container">
-      <button [disabled]="!email.value||!password.value"
+      <button id="loginButton" [disabled]="!email.value||!password.value"
       mat-raised-button color="primary"
       (click)="login()">Log In</button>
       <button [hidden]="oauthUnavailable"

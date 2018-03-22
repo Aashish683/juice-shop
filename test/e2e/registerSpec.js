@@ -1,4 +1,4 @@
-describe('/#/register', () => {
+/* describe('/#/register', () => {
   const config = require('config')
   protractor.beforeEach.login({email: 'admin@' + config.get('application.domain'), password: 'admin123'})
 
@@ -23,3 +23,5 @@ describe('/#/register', () => {
     protractor.expect.challengeSolved({challenge: 'XSS Tier 2'})
   })
 })
+
+*/

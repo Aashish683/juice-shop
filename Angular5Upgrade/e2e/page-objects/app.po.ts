@@ -6,7 +6,7 @@ export class AppPage {
   }
 
   getWebContainerClass() {
-    let containerClass = element(by.css('.web-container')).getAttribute('class');
+    const containerClass = element(by.css('.web-container')).getAttribute('class');
     return containerClass.then((value) => value.length);
   }
 }

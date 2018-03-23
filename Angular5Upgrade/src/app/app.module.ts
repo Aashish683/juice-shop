@@ -49,6 +49,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatListModule } from '@angular/material/list';
+import { TokenSaleComponent } from './token-sale/token-sale.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { MatListModule } from '@angular/material/list';
     ScoreBoardComponent,
     ComplainComponent,
     RecycleComponent,
-    DisplayProductComponent
+    DisplayProductComponent,
+    TokenSaleComponent
   ],
   entryComponents: [DisplayProductComponent],
   imports: [
@@ -127,6 +129,10 @@ import { MatListModule } from '@angular/material/list';
       {
         path: 'recycle',
         component: RecycleComponent
+      },
+      {
+        path: 'tokensale-ico-ea',
+        component: TokenSaleComponent
       },
       {
         path: '**',

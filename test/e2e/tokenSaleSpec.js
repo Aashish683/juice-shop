@@ -8,3 +8,5 @@ describe('/tokensale-ico-ea', () => {
     protractor.expect.challengeSolved({challenge: 'Blockchain Tier 1'})
   })
 })
+
+// Status - All specs working!

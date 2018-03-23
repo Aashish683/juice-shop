@@ -7,8 +7,8 @@ protractor.expect = {
       // browser.waitForAngularEnabled(false)
       it("challenge '" + context.challenge + "' should be solved on score board", () => {
         // browser.waitForAngularEnabled(false)
-        expect(element(by.id(context.challenge + '.solved')).getAttribute('hidden').toBeTruthy)
-        expect(element(by.id(context.challenge + '.notSolved')).getAttribute('hidden').not.toBeTruthy)
+        expect(element(by.id(context.challenge + '.solved')).getAttribute('hidden')).not.toBeTruthy()
+        expect(element(by.id(context.challenge + '.notSolved')).getAttribute('hidden')).toBeTruthy()
       })
     })
   }

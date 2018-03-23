@@ -2,12 +2,12 @@ import { WindowRefService } from './Services/window-ref.service';
 import { ConfigurationService } from './Services/configuration.service';
 import { Component, Output } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
-import { NgZone } from '@angular/core';
 import { TestService } from './Services/test.service';
 import * as io from "socket.io-client";
 import { environment } from './../environments/environment';
 import { ChallengeService } from './Services/challenge.service';
 import { EventEmitter } from '@angular/core';
+import {  NgZone } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -27,8 +27,9 @@ export class AppComponent {
   public scoreBoardSolved
 
   constructor(private confServe:ConfigurationService,private translate:TranslateService,
-    private windowRef:WindowRefService,private ngZone:NgZone,
-    private testServe:TestService,private challengeServe:ChallengeService){
+    private windowRef:WindowRefService,
+    private testServe:TestService,private challengeServe:ChallengeService,
+    private ngZone: NgZone){
     this.translate.setDefaultLang('en');
     this.translate.use('en');
     this.windowRef.nativeWindow.onresize = (evt)=>{
@@ -66,32 +67,37 @@ export class AppComponent {
       this.theme = confData.application.theme;
     })
 
-    this.socket = io.connect(this.url);
-    this.socket.on('challenge solved' , (data) => {
-      if (data && data.challenge) {
-        if (!data.hidden) {
-          this.showNotification(data)
+    this.ngZone.runOutsideAngular(() => {
+      this.socket = io.connect(this.url);
+      this.socket.on('challenge solved' , (data) => {
+        if (data && data.challenge) {
+          this.ngZone.run(()=>{
+            if (!data.hidden) {
+              this.showNotification(data)
+            }
+            if (!data.isRestore) {
+              this.saveProgress()
+            }
+            if (data.name === 'Score Board') {
+              this.scoreBoardSolved = true
+            }
+          })
+          this.socket.emit('notification received', data.flag)
         }
-        if (!data.isRestore) {
-          this.saveProgress()
-        }
-        if (data.name === 'Score Board') {
-          this.scoreBoardSolved = true
-        }
-        this.socket.emit('notification received', data.flag)
-      }
-    });
+      });
 
-    this.socket.on('server started' ,() => {
-      let continueCode;
-      if(this.windowRef.nativeWindow.localstorage.get('continueCode'))
-         continueCode = this.windowRef.nativeWindow.localstorage.get('continueCode')
+      this.socket.on('server started' ,() => {
+        this.ngZone.run(()=>{
+          if(this.windowRef.nativeWindow.localstorage.get('continueCode'))
+          continueCode = this.windowRef.nativeWindow.localstorage.get('continueCode')
 
-      if(continueCode){
-        this.challengeServe.restoreProgress(encodeURIComponent(continueCode)).subscribe(() => {
-
+       if(continueCode){
+         this.challengeServe.restoreProgress(encodeURIComponent(continueCode)).subscribe(() => {
+         })
+       }
         })
-      }
+        let continueCode;
+      })
     })
   }
 

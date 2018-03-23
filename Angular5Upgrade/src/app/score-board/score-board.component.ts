@@ -1,7 +1,7 @@
 import { environment } from './../../environments/environment';
 import { MatTableDataSource } from '@angular/material';
 import { ChallengeService } from './../Services/challenge.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import * as io from "socket.io-client";
 
 @Component({
@@ -16,24 +16,27 @@ export class ScoreBoardComponent implements OnInit {
   public defaultDataSource = new MatTableDataSource();
   private url = environment.hostServer;
   private socket;
-  constructor(private challengeServe: ChallengeService) { }
+  constructor(private challengeServe: ChallengeService,private ngZone:NgZone) { }
 
   ngOnInit() {
     this.challengeServe.find().subscribe((challenges) => {
       console.log(challenges.data);
       this.challenges = challenges.data;
     })
-    this.socket = io.connect(this.url);
-    this.socket.on('challenge solved' , (data) => {
-      if (data && data.challenge) {
-        for (let i = 0; i < this.challenges.length; i++) {
-          if (this.challenges[i].name === data.name) {
-            this.challenges[i].solved = true
-            break;
+    this.ngZone.runOutsideAngular(()=>{
+      this.socket = io.connect(this.url);
+      this.socket.on('challenge solved' , (data) => {
+        if (data && data.challenge) {
+          for (let i = 0; i < this.challenges.length; i++) {
+            if (this.challenges[i].name === data.name) {
+              this.challenges[i].solved = true
+              break;
+            }
           }
         }
-      }
-    });
+      });
+    })
+
   }
 
 

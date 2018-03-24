@@ -22,13 +22,11 @@ protractor.beforeEach = {
         browser.get('/login')
         console.log(email)
         console.log(password)
-        element(by.css('input')).sendKeys(email)
         element(by.id('email')).sendKeys(email)
         element(by.id('password')).sendKeys(password)
         element(by.id('loginButton')).click()
       })
       it('should have logged in user "' + email + '" with password "' + password + '"', () => {
-        browser.getCurrentUrl().then(x => console.log(x))
         expect(browser.getCurrentUrl()).toMatch(/\/search/)
       })
     })

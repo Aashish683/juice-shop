@@ -9,6 +9,7 @@ import { MatIconModule, MatFormFieldModule, MatCardModule,MatCheckboxModule,MatB
 import { ReactiveFormsModule } from '@angular/forms';
 import { WindowRefService } from '../Services/window-ref.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { By } from '@angular/platform-browser';
 
 
 class MockRouter {
@@ -49,14 +50,9 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('returns error message from server to client on failed login attempt' , () => {
-
-    component.login()
-    expect(component.error).toBe('error')
-   console.log(environment.hostServer)
-   const req = httpMock.expectOne(environment.hostServer + '/rest/user/login')
-   expect(req.request.method).toBe("POST")
-   req.flush(null,{status:401,statusText:'error'})
+  it('has unticked remember-me checkbox by default' , () => {
+    let checkbox = fixture.debugElement.query(By.css('mat-checkbox'))
+    expect(checkbox.classes['mat-checkbox-checked']).toBe(false)
   });
 
   afterEach(() => {

@@ -143,7 +143,7 @@
   "license": "MIT",
   "scripts": {
     "postinstall": "npm --prefix ./Angular5Upgrade install && cd Angular5Upgrade && ng build --prod",
-    "start": "concurrently --kill-others \"node app\" \"cd Angular5Upgrade && ng serve\"",
+    "serve": "concurrently --kill-others \"node app\" \"cd Angular5Upgrade && ng serve\"",
     "test": "npm run frontend-tests && nyc --report-dir=./build/reports/coverage/server-tests mocha test/server",
     "frisby": "nyc --report-dir=./build/reports/coverage/api-tests node ./test/apiTests.js",
     "preupdate-webdriver": "npm install",
@@ -152,7 +152,7 @@
     "protractor": "node test/e2eTests.js",
     "stryker": "stryker run stryker.client-conf.js",
     "vagrant": "cd vagrant && vagrant up",
-    "serve": "cd Angular5Upgrade && ng build --prod && cd .. && node app",
+    "start": "cd Angular5Upgrade && ng build --prod && cd .. && node app",
     "install1": "npm install",
     "postinstall1": "npm --prefix ./Angular5Upgrade install && cd Angular5Upgrade && ng build --prod && cd ..",
     "preupdate-webdriver1": "npm run install1",

@@ -1,3 +1,5 @@
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { Routing } from './app.routing';
 import { TestService } from './Services/test.service';
 import { ProductReviewService } from './Services/product-review.service';
 import { ProductService } from './Services/product.service';
@@ -22,30 +24,32 @@ import { ConfigurationService } from './Services/configuration.service';
 import { AdministrationService } from './Services/administration.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Component } from '@angular/core';
-import {HttpModule} from '@angular/http';
-import {MatTableModule} from '@angular/material/table';
+import { HttpModule } from '@angular/http';
+import { MatTableModule } from '@angular/material/table';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { UserService } from './Services/user.service';
 import { TableComponent } from './table/table.component';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {RouterModule} from '@angular/router';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { DisplayProductComponent } from './display-product/display-product.component';
-import {MatDialogModule} from '@angular/material/dialog';
-import {MatButtonModule} from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
-import {MatCardModule} from '@angular/material/card';
-import {MatCheckboxModule} from '@angular/material/checkbox';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common/src/common_module';
-import {MatSelectModule} from '@angular/material/select';
-import {MatSidenavModule} from '@angular/material/sidenav';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatSelectModule } from '@angular/material/select';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatListModule } from '@angular/material/list';
+import { TokenSaleComponent } from './token-sale/token-sale.component';
 
 @NgModule({
   declarations: [
@@ -65,71 +69,15 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     ScoreBoardComponent,
     ComplainComponent,
     RecycleComponent,
-    DisplayProductComponent
+    DisplayProductComponent,
+    TokenSaleComponent
   ],
-  entryComponents:[DisplayProductComponent],
+  entryComponents: [DisplayProductComponent],
   imports: [
+    Routing,
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
-    RouterModule.forRoot([
-      {
-        path:'administration',
-        component:AdministrationComponent
-      },
-      {
-        path:'about',
-        component:AboutComponent
-      },
-      {
-        path:'contact',
-        component:ContactComponent
-      },
-      {
-        path:'login',
-        component:LoginComponent
-      },
-      {
-        path:'register',
-        component:RegisterComponent
-      },
-      {
-        path:'basket',
-        component:BasketComponent
-      },
-      {
-        path:'search',
-        component:TableComponent
-      },
-      {
-        path:'logout',
-        component:LogoutComponent
-      },
-      {
-        path:'change-password',
-        component:ChangePasswordComponent
-      },
-      {
-        path:'forgot-password',
-        component:ForgotPasswordComponent
-      },
-      {
-        path:'score-board',
-        component:ScoreBoardComponent
-      },
-      {
-        path:'complain',
-        component:ComplainComponent
-      },
-      {
-        path:'recycle',
-        component:RecycleComponent
-      },
-      {
-        path:'**',
-        component:TableComponent
-      }
-    ]),
     BrowserModule,
     HttpClientModule,
     FormsModule,
@@ -147,18 +95,23 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatSelectModule,
     MatSidenavModule,
     MatToolbarModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    MatListModule
   ],
   providers: [AdministrationService,
-              ConfigurationService,
-              UserService,
-              ChallengeService,
-              WindowRefService,
-              SecurityQuestionService,
-              BasketService,
-              ProductService,
-              ProductReviewService,
-              TestService],
+    ConfigurationService,
+    UserService,
+    ChallengeService,
+    WindowRefService,
+    SecurityQuestionService,
+    BasketService,
+    ProductService,
+    ProductReviewService,
+    TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+export function createTranslateLoader (http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

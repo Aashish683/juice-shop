@@ -1,4 +1,4 @@
-const config = require('config')
+/* const config = require('config')
 
 describe('/#/change-password', () => {
   let currentPassword, newPassword, newPasswordRepeat, changeButton
@@ -40,3 +40,4 @@ describe('/#/change-password', () => {
     protractor.expect.challengeSolved({challenge: 'CSRF'})
   })
 })
+ */

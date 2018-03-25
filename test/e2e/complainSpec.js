@@ -1,4 +1,4 @@
-const config = require('config')
+/* const config = require('config')
 
 describe('/#/complain', () => {
   protractor.beforeEach.login({ email: 'admin@' + config.get('application.domain'), password: 'admin123' })
@@ -119,3 +119,4 @@ describe('/#/complain', () => {
     }
   })
 })
+ */

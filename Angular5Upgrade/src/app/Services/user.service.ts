@@ -2,23 +2,25 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs/add/operator/map';
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class UserService {
 
-  isLoggedIn:boolean=false;
-  constructor(private http:HttpClient) { }
+  hostServer = environment.hostServer;
+  isLoggedIn = false;
+  constructor (private http: HttpClient) { }
 
-  login(params){
-   return this.http.post('/rest/user/login',params);
+  login (params) {
+    return this.http.post(this.hostServer + '/rest/user/login', params);
   }
 
-  testServer(){
-    return this.http.get('/rest/admin/application-version');
+  testServer () {
+    return this.http.get(this.hostServer + '/rest/admin/application-version');
   }
 
-  whoAmI(){
-    return this.http.get('/rest/user/whoami').map((response:any)=>response.user);
+  whoAmI () {
+    return this.http.get(this.hostServer + '/rest/user/whoami').map((response: any) => response.user);
   }
 
 }

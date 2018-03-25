@@ -1,4 +1,4 @@
-const config = require('config')
+/* const config = require('config')
 const tamperingProductId = ((() => {
   const products = config.get('products')
   for (let i = 0; i < products.length; i++) {
@@ -49,3 +49,5 @@ describe('/rest', () => {
     protractor.expect.challengeSolved({challenge: 'Product Tampering'})
   })
 })
+
+*/

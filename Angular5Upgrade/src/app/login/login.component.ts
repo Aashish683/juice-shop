@@ -32,46 +32,45 @@ export class LoginComponent implements OnInit {
     else
     this.rememberMe=false;
 
-    this.initializeOauth(windowRef.nativeWIndow);
+    this.initializeOauth(windowRef.nativeWindow);
    }
 
   ngOnInit() {
-    //this.userServe.testServer().subscribe(x=>console.log(x));
+    // this.userServe.testServer().subscribe(x=>console.log(x));
   }
 
-  login(){
-    //console.log('IN');
-    //Map Server response to JSON!
-    this.user.email=this.emailControl.value;
-    this.user.password=this.passwordControl.value;
-    this.userServe.login(this.user).subscribe((authentication:any)=>{
-      console.log(authentication);
-      localStorage.setItem('token',authentication.token);
-      sessionStorage.bid=authentication.bid;
-      this.userServe.isLoggedIn=true;
-      this.router.navigate(['/']);
+  login() {
+   this.user.email = this.emailControl.value
+    this.user.password = this.passwordControl.value
+    this.userServe.login(this.user).subscribe((authentication: any ) => {
+      console.log(authentication)
+      localStorage.setItem('token', authentication.token)
+      sessionStorage.bid = authentication.bid
+      this.userServe.isLoggedIn = true
+      this.router.navigate(['/search'])
     },
-    (error)=>{
-      console.log(error);
-      localStorage.removeItem('token');
-      delete sessionStorage.bid;
-      this.error=error;
-      this.userServe.isLoggedIn=false;
-      this.emailControl.markAsPristine();
-      this.passwordControl.markAsPristine();
+    (error) => {
+      console.log(error)
+      localStorage.removeItem('token')
+      delete sessionStorage.bid
+      this.error = error
+      this.userServe.isLoggedIn = false
+      this.emailControl.markAsPristine()
+      this.passwordControl.markAsPristine()
     }
   );
 
-  if(this.rememberMe)
+    if (this.rememberMe) {
     localStorage.setItem('email',this.user.email);
-  else
+    } else {
     localStorage.removeItem('email');
+    }
   }
 
 
 
   googleLogin(){
-    this.windowRef.nativeWIndow.
+    this.windowRef.nativeWindow.
     location.replace(this.oauthProviderUrl + '?client_id=' +
     this.clientId + '&response_type=token&scope=email&redirect_uri=' +
     this.authorizedRedirectURIs[this.redirectUri]);

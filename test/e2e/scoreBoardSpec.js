@@ -1,15 +1,16 @@
-const config = require('config')
+ const config = require('config')
 
-describe('/#/score-board', () => {
+describe('/score-board', () => {
   describe('challenge "scoreBoard"', () => {
     it('should be possible to access score board', () => {
-      browser.get('/#/score-board')
+      browser.get('/score-board')
+      browser.sleep(1000)
       expect(browser.getCurrentUrl()).toMatch(/\/score-board/)
     })
 
     protractor.expect.challengeSolved({challenge: 'Score Board'})
   })
-
+ /*
   describe('challenge "continueCode"', () => {
     it('should be possible to solve the non-existent challenge #99', () => {
       browser.executeScript('var $http = angular.injector([\'juiceShop\']).get(\'$http\'); $http.put(\'/rest/continue-code/apply/69OxrZ8aJEgxONZyWoz1Dw4BvXmRGkKgGe9M7k2rK63YpqQLPjnlb5V5LvDj\');')
@@ -48,4 +49,5 @@ describe('/#/score-board', () => {
       })
     }
   })
+  */
 })

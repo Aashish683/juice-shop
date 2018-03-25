@@ -52,6 +52,7 @@
     "@angular/compiler-cli": "^5.2.0",
     "body-parser": "~1.18",
     "colors": "~1.1",
+    "concurrently": "^3.5.1",
     "config": "~1.29",
     "cookie-parser": "~1.4",
     "cors": "~2.8",
@@ -141,16 +142,25 @@
   },
   "license": "MIT",
   "scripts": {
-    "postinstall": "cd Angular5Upgrade && npm install && ng build --prod",
-    "start": "node app",
-    "test": "standard && karma start karma.conf.js && nyc --report-dir=./build/reports/coverage/server-tests mocha test/server",
+    "postinstall": "npm --prefix ./Angular5Upgrade install && cd Angular5Upgrade && ng build --prod",
+    "start": "concurrently --kill-others \"node app\" \"cd Angular5Upgrade && ng serve\"",
+    "test": "npm run frontend-tests && nyc --report-dir=./build/reports/coverage/server-tests mocha test/server",
     "frisby": "nyc --report-dir=./build/reports/coverage/api-tests node ./test/apiTests.js",
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",
     "preprotractor": "npm run update-webdriver",
     "protractor": "node test/e2eTests.js",
     "stryker": "stryker run stryker.client-conf.js",
-    "vagrant": "cd vagrant && vagrant up"
+    "vagrant": "cd vagrant && vagrant up",
+    "serve": "cd Angular5Upgrade && ng build --prod && cd .. && node app",
+    "install1": "npm install",
+    "postinstall1": "npm --prefix ./Angular5Upgrade install && cd Angular5Upgrade && ng build --prod && cd ..",
+    "preupdate-webdriver1": "npm run install1",
+    "update-webdriver1": "webdriver-manager update",
+    "pree2e": "npm run update-webdriver1",
+    "e2e": "node test/e2eTests.js",
+    "frontend-tests": "cd Angular5Upgrade && ng test --watch=false && ng lint",
+    "end-to-end": "concurrently --kill-others --success last \"node app\" \"cd Angular5Upgrade && ng e2e\""
   },
   "engines": {
     "node": ">=6 <=9"

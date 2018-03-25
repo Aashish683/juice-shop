@@ -1,12 +1,14 @@
-describe('/ftp', () => {
+ describe('/ftp', () => {
   describe('challenge "confidentialDocument"', () => {
     it('should be able to access file /ftp/acquisitions.md', () => {
+      browser.sleep(1000)
       browser.driver.get(browser.baseUrl + '/ftp/acquisitions.md')
+      browser.sleep(1000)
     })
 
     protractor.expect.challengeSolved({challenge: 'Confidential Document'})
   })
-
+/*
   describe('challenge "errorHandling"', () => {
     it('should leak information through error message accessing /ftp/easter.egg due to wrong file suffix', () => {
       browser.driver.get(browser.baseUrl + '/ftp/easter.egg')
@@ -50,4 +52,5 @@ describe('/ftp', () => {
 
     protractor.expect.challengeSolved({challenge: 'Misplaced Signature File'})
   })
+  */
 })

@@ -1,6 +1,6 @@
 import { WindowRefService } from './../Services/window-ref.service';
 import { AdministrationService } from './../Services/administration.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { ConfigurationService } from '../Services/configuration.service';
 import { UserService } from '../Services/user.service';
 import { ChallengeService } from '../Services/challenge.service';
@@ -8,19 +8,24 @@ import { ChallengeService } from '../Services/challenge.service';
 import { Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { OnChanges, SimpleChanges } from '@angular/core/src/metadata/lifecycle_hooks';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit {
-  languages:any[];
-  version:string;
-  version$;
-  logoSrc:string;
+export class NavbarComponent implements OnInit,OnChanges {
+  public languages: any[];
+  public version: string;
+  public version$;
+  public logoSrc: string;
+  @Input() public scoreBoardVisible = false;
+
   constructor(private adminServe:AdministrationService,private configServe:ConfigurationService,
-        private userServe:UserService,private challengeServe:ChallengeService,private router:Router,
+        private userServe:UserService,public challengeServe:ChallengeService,
+        private translate:TranslateService,private router:Router,
         iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
           this.languages=languages;
           this.configServe.getApplicationConfiguration().subscribe(confData=>{
@@ -36,16 +41,35 @@ export class NavbarComponent implements OnInit {
        }
 
   ngOnInit() {
-         this.version$=this.adminServe.getApplicationVersion();
-         this.adminServe.getApplicationVersion().subscribe((versionData:any)=>{
-          console.log(versionData);
-          this.version='v' + versionData.version;
-       })
+    this.version$ = this.adminServe.getApplicationVersion();
+    this.adminServe.getApplicationVersion().subscribe((versionData: any) => {
+    console.log(versionData);
+    this.version = 'v' + versionData.version;
+    })
+
+    this.challengeServe.find({ name: 'Score Board' }).subscribe((challenges: any) => {
+        console.log(challenges)
+        challenges = challenges.data
+        this.scoreBoardVisible = challenges[0].solved
+    }, (err) => {
+      console.log(err)
+    })
   }
 
+  ngOnChanges(changes: SimpleChanges) {
 
-  switchLang(lang){
-       // this.translate.use(lang);
+  }
+
+  switchLang(lang) {
+        this.translate.use(lang);
+  }
+
+  isLoggedIn() {
+    return localStorage.getItem('token')
+  }
+
+  logOut() {
+    localStorage.removeItem('token')
   }
 
   onSearch(value:string){

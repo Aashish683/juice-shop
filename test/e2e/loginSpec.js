@@ -1,4 +1,4 @@
-const config = require('config')
+/* const config = require('config')
 
 describe('/#/login', () => {
   let email, password, rememberMeCheckbox, loginButton
@@ -120,3 +120,4 @@ describe('/#/login', () => {
     protractor.expect.challengeSolved({challenge: 'Login CISO'})
   })
 })
+*/

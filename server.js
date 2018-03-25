@@ -116,7 +116,9 @@ app.use('/encryptionkeys/:file', keyServer())
 /* Swagger documentation for B2B v2 endpoints */
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
-app.use(express.static(__dirname+ '/Angular5Upgrade/dist'));
+// app.use(express.static(applicationRoot + '/app'))
+app.use(express.static(__dirname + '/Angular5Upgrade/dist'))
+
 app.use(cookieParser('kekse'))
 app.use(bodyParser.json())
 
@@ -301,7 +303,7 @@ function populateIndexTemplate () {
 }
 
 function populateThreeJsTemplate () {
-  fs.copy('app/private/threejs-demo.template.html', 'app/private/threejs-demo.html', { overwrite: true }, () => {
+  fs.copy('Angular5Upgrade/src/assets/private/threejs-demo.template.html', 'Angular5Upgrade/src/assets/private/threejs-demo.html', { overwrite: true }, () => {
     if (config.get('application.planetOverlayMap')) {
       let overlay = config.get('application.planetOverlayMap')
       if (utils.startsWith(overlay, 'http')) {
@@ -343,7 +345,7 @@ function replaceImagePath (overlay) {
   replace({
     regex: 'orangemap2k.jpg',
     replacement: overlay,
-    paths: ['app/private/threejs-demo.html'],
+    paths: ['Angular5Upgrade/src/assets/private/threejs-demo.html'],
     recursive: false,
     silent: true
   })
@@ -353,7 +355,7 @@ function replaceThreeJsTitleTag (threeJsTitleTag) {
   replace({
     regex: '<title>Welcome to Planet Orangeuze</title>',
     replacement: threeJsTitleTag,
-    paths: ['app/private/threejs-demo.html'],
+    paths: ['Angular5Upgrade/src/assets/private/threejs-demo.html'],
     recursive: false,
     silent: true
   })

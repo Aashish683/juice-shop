@@ -9,7 +9,6 @@ import { Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
 import { OnChanges, SimpleChanges } from '@angular/core/src/metadata/lifecycle_hooks';
-import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'navbar',
@@ -25,7 +24,7 @@ export class NavbarComponent implements OnInit,OnChanges {
 
   constructor(private adminServe:AdministrationService,private configServe:ConfigurationService,
         private userServe:UserService,public challengeServe:ChallengeService,
-        private translate:TranslateService,private router:Router,
+        private router:Router,
         iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
           this.languages=languages;
           this.configServe.getApplicationConfiguration().subscribe(confData=>{
@@ -61,7 +60,7 @@ export class NavbarComponent implements OnInit,OnChanges {
   }
 
   switchLang(lang) {
-        this.translate.use(lang);
+       // this.translate.use(lang);
   }
 
   isLoggedIn() {

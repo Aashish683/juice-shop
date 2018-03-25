@@ -1,7 +1,6 @@
 import { WindowRefService } from './Services/window-ref.service';
 import { ConfigurationService } from './Services/configuration.service';
 import { Component, Output } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { TestService } from './Services/test.service';
 import * as io from "socket.io-client";
 import { environment } from './../environments/environment';
@@ -26,12 +25,12 @@ export class AppComponent {
   private socket
   public scoreBoardSolved
 
-  constructor(private confServe:ConfigurationService,private translate:TranslateService,
+  constructor(private confServe:ConfigurationService,
     private windowRef:WindowRefService,
     private testServe:TestService,private challengeServe:ChallengeService,
     private ngZone: NgZone){
-    this.translate.setDefaultLang('en');
-    this.translate.use('en');
+    // this.translate.setDefaultLang('en');
+    // this.translate.use('en');
     this.windowRef.nativeWindow.onresize = (evt)=>{
         this.screen.width=this.windowRef.nativeWindow.innerWidth;
         this.screen.height=this.windowRef.nativeWindow.innerHeight;

@@ -1,4 +1,4 @@
-<div *ngFor="let difficulty of [1, 2, 3, 4, 5, 6]">
+<div *ngIf="challenges" *ngFor="let difficulty of [1, 2, 3, 4, 5, 6]">
   <mat-table class="mat-elevation-z8" style="margin-bottom:50px;border-bottom:1px solid black;margin-left:8.3%;width:83%" #table [dataSource]="challenges ? filterToDataSource(challenges,difficulty,'name') : defaultDataSource">
 
       <ng-container matColumnDef="name">

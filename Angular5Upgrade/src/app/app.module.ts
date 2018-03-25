@@ -1,3 +1,4 @@
+import { Routing } from './app.routing';
 import { TestService } from './Services/test.service';
 import { ProductReviewService } from './Services/product-review.service';
 import { ProductService } from './Services/product.service';
@@ -74,71 +75,10 @@ import { TokenSaleComponent } from './token-sale/token-sale.component';
   ],
   entryComponents: [DisplayProductComponent],
   imports: [
+    Routing,
     BrowserModule,
     BrowserAnimationsModule,
     HttpModule,
-    RouterModule.forRoot([
-      {
-        path: 'administration',
-        component: AdministrationComponent
-      },
-      {
-        path: 'about',
-        component: AboutComponent
-      },
-      {
-        path: 'contact',
-        component: ContactComponent
-      },
-      {
-        path: 'login',
-        component: LoginComponent
-      },
-      {
-        path: 'register',
-        component: RegisterComponent
-      },
-      {
-        path: 'basket',
-        component: BasketComponent
-      },
-      {
-        path: 'search',
-        component: TableComponent
-      },
-      {
-        path: 'logout',
-        component: LogoutComponent
-      },
-      {
-        path: 'change-password',
-        component: ChangePasswordComponent
-      },
-      {
-        path: 'forgot-password',
-        component: ForgotPasswordComponent
-      },
-      {
-        path: 'score-board',
-        component: ScoreBoardComponent
-      },
-      {
-        path: 'complain',
-        component: ComplainComponent
-      },
-      {
-        path: 'recycle',
-        component: RecycleComponent
-      },
-      {
-        path: 'tokensale-ico-ea',
-        component: TokenSaleComponent
-      },
-      {
-        path: '**',
-        component: TableComponent
-      }
-    ]),
     BrowserModule,
     HttpClientModule,
     TranslateModule.forRoot({

@@ -2,6 +2,7 @@ protractor.expect = {
   challengeSolved: function (context) {
     describe('(shared)', () => {
       beforeEach(() => {
+        browser.sleep(1000)
         browser.get('/score-board')
       })
       it("challenge '" + context.challenge + "' should be solved on score board", () => {
@@ -17,11 +18,12 @@ protractor.beforeEach = {
     describe('(shared)', () => {
       let email, password
       beforeEach(() => {
+        browser.sleep(1000)
         email = context.email
         password = context.password
         browser.get('/login')
-        console.log(email)
-        console.log(password)
+        // console.log(email)
+        // console.log(password)
         element(by.id('email')).sendKeys(email)
         element(by.id('password')).sendKeys(password)
         element(by.id('loginButton')).click()

@@ -9,7 +9,7 @@
        <navbar [scoreBoardVisible]="scoreBoardSolved"></navbar>
        <mat-list>
            <mat-list-item style ="border:1px solid gainsboro" *ngFor="let notification of notifications;index as i">
-            <mat-icon mat-list-icon>notifications</mat-icon>
+            <mat-icon style="color:green" mat-list-icon>notifications</mat-icon>
             <h4 style="color:green" mat-line>{{notification.message}}</h4>
             <mat-icon style="cursor:pointer" (click)="closeNotification(i)">close</mat-icon>
           </mat-list-item>

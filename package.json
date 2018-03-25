@@ -140,7 +140,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "postinstall": "npm --prefix ./app install ./app && grunt minify",
+    "postinstall": "npm --prefix ./Angular5Upgrade install && cd Angular5Upgrade && ng build --prod",
     "start": "concurrently --kill-others \"node app\" \"cd Angular5Upgrade && ng serve\"",
     "test": "npm run frontend-tests && nyc --report-dir=./build/reports/coverage/server-tests mocha test/server",
     "frisby": "nyc --report-dir=./build/reports/coverage/api-tests node ./test/apiTests.js",

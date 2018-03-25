@@ -3,8 +3,10 @@ const config = require('config')
 describe('/administration', () => {
   describe('challenge "adminSection"', () => {
     it('should be possible to access administration section even when not authenticated', () => {
+      browser.sleep(1000)
       // browser.waitForAngularEnabled(false)
       browser.get('/administration')
+      browser.sleep(1000)
       expect(browser.getCurrentUrl()).toMatch(/\/administration/)
     })
     // console.log('In Adminsistration 1')
@@ -13,6 +15,7 @@ describe('/administration', () => {
 
   describe('challenge "fiveStarFeedback"', () => {
     // browser.waitForAngularEnabled(true)
+    browser.sleep(500)
     protractor.beforeEach.login({email: 'jim@' + config.get('application.domain'), password: 'ncc-1701'})
     // browser.waitForAngularEnabled(true)
     /* it('should be possible for any logged-in user to delete feedback', () => {

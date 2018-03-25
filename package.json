@@ -152,7 +152,7 @@
     "protractor": "node test/e2eTests.js",
     "stryker": "stryker run stryker.client-conf.js",
     "vagrant": "cd vagrant && vagrant up",
-    "start": "cd Angular5Upgrade && ng build --prod && cd .. && node app",
+    "start": "node app",
     "install1": "npm install",
     "postinstall1": "npm --prefix ./Angular5Upgrade install && cd Angular5Upgrade && ng build --prod && cd ..",
     "preupdate-webdriver1": "npm run install1",

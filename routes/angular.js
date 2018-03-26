@@ -4,8 +4,8 @@ const utils = require('../lib/utils')
 exports = module.exports = function serveAngularClient () {
   return ({url}, res, next) => {
     if (!utils.startsWith(url, '/api') && !utils.startsWith(url, '/rest')) {
-       // res.sendFile(path.resolve(__dirname, '../app/index.html'))
-       res.sendFile(path.resolve(__dirname, '../Angular5Upgrade/dist/index.html'))
+        res.sendFile(path.resolve(__dirname, '../app/index.html'))
+       // res.sendFile(path.resolve(__dirname, '../Angular5Upgrade/dist/index.html'))
     } else {
       next(new Error('Unexpected path: ' + url))
     }

@@ -1,5 +1,5 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
 
@@ -9,6 +9,6 @@ export class ProductReviewService {
   constructor(private http:Http) { }
 
   get(id){
-    return this.http.get(this.host + '/' + id + '/reviews').map(response=>(response.json()).data);
+    return this.http.get(this.host + '/' + id + '/reviews').map((response:any)=>response.data);
   }
 }

@@ -1,20 +1,19 @@
-import { Http } from '@angular/http';
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import 'rxjs/add/operator/map';
 import { environment } from '../../environments/environment';
 
 @Injectable()
 export class SecurityQuestionService {
   host = '/api/SecurityQuestions';
   hostServer = environment.hostServer;
-  constructor(private http:Http) { }
+  constructor(private http:HttpClient) { }
 
   find(params?){
-   return this.http.get(this.hostServer+this.host + '/',{params:params}).map(response=>response.json());
+   return this.http.get(this.hostServer+this.host + '/',{params:params});
   }
 
   findBy(email){
-   return this.http.get(this.hostServer + '/rest/user/security-question?email=' + email).map(response=>response.json());
+   return this.http.get(this.hostServer + '/rest/user/security-question?email=' + email);
   }
 
 

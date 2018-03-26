@@ -20,7 +20,8 @@ export class ForgotPasswordComponent implements OnInit {
 
   findSecurityQuestion(){
     if(this.emailControl.value){
-      this.securityQuestionServe.findBy(this.emailControl.value).subscribe((securityQuestion)=>{
+      this.securityQuestionServe.findBy(this.emailControl.value).subscribe((securityQuestion:any)=>{
+        console.log('Security is' +securityQuestion)
         this.securityQuestion=securityQuestion.question;
       })
     }

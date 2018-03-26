@@ -6,7 +6,7 @@ import { environment } from '../../environments/environment';
 @Injectable()
 export class ProductReviewService {
   host:string = environment.hostServer + '/rest/product';
-  constructor(private http:Http) { }
+  constructor(private http:HttpClient) { }
 
   get(id){
     return this.http.get(this.host + '/' + id + '/reviews').map((response:any)=>response.data);

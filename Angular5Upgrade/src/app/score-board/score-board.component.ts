@@ -19,7 +19,7 @@ export class ScoreBoardComponent implements OnInit {
   constructor(private challengeServe: ChallengeService,private ngZone:NgZone) { }
 
   ngOnInit() {
-    this.challengeServe.find().subscribe((challenges) => {
+    this.challengeServe.find().subscribe((challenges:any) => {
       console.log(challenges.data);
       this.challenges = challenges.data;
     })

@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.securityQuestionsServe.find().subscribe((securityQuestions)=>{
+    this.securityQuestionsServe.find().subscribe((securityQuestions:any)=>{
        console.log(securityQuestions);
        this.securityQuestions=securityQuestions.data;
     });

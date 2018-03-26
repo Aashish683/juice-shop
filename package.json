@@ -144,7 +144,7 @@
   "scripts": {
     "postinstall": "npm --prefix ./Angular5Upgrade install && cd Angular5Upgrade && ng build --prod",
     "serve": "concurrently --kill-others \"node app\" \"cd Angular5Upgrade && ng serve\"",
-    "test": "npm run frontend-tests && nyc --report-dir=./build/reports/coverage/server-tests mocha test/server",
+    "test": "standard && npm run frontend-tests && nyc --report-dir=./build/reports/coverage/server-tests mocha test/server",
     "frisby": "nyc --report-dir=./build/reports/coverage/api-tests node ./test/apiTests.js",
     "preupdate-webdriver": "npm install",
     "update-webdriver": "webdriver-manager update",

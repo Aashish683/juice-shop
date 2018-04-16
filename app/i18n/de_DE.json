@@ -24,13 +24,16 @@
   "MANDATORY_COMMENT": "Bitte gib einen Kommentar ein.",
   "INVALID_COMMENT_LENGTH": "Kommentarlänge muss {{length}} Zeichen betragen.",
   "MANDATORY_RATING": "Bitte gib eine Bewertung ein.",
+  "MANDATORY_CAPTCHA": "Bitte löse das CAPTCHA, um zu beweisen, dass du eine reale Person bist.",
   "LABEL_AUTHOR": "Verfasser",
   "LABEL_COMMENT": "Kommentar",
   "LABEL_RATING": "Bewertung",
+  "LABEL_CAPTCHA": "Was ist",
   "BTN_SUBMIT": "Abschicken",
   "TITLE_ABOUT": "Über uns",
   "SECTION_CORPORATE_HISTORY": "Firmengeschichte und Grundsätze",
   "SECTION_CUSTOMER_FEEDBACK": "Kundenfeedback",
+  "SECTION_SOCIAL_MEDIA": "Folge uns in den Sozialen Medien",
   "LINK_TERMS_OF_USE": "Schauen Sie sich unsere langweiligen Nutzungsbedingungen an, wenn Sie sich für so elendes Zeug interessieren.",
   "TITLE_ADMINISTRATION": "Administration",
   "SECTION_USER": "Registrierte Benutzer",
@@ -134,5 +137,9 @@
   "SECTION_SALES_PITCH": "Überzeugendes ICO Angebot",
   "GIVE_US_ALL_YOUR_MONEY": "Gib uns all dein Geld.",
   "ICO_FAQ_QUESTION": "Kann ich mit {{juicycoin}} wirklich reich werden?",
-  "ICO_FAQ_ANSWER": "Natürlich kannst du! Wir würden dich niemals anlügen!"
+  "ICO_FAQ_ANSWER": "Natürlich kannst du! Wir würden dich niemals anlügen!",
+  "TITLE_TRACK_ORDERS": "Bestellungen verfolgen",
+  "TITLE_TRACK_RESULTS": "Ergebnisse für Nr.",
+  "LABEL_ORDER_ID": "Bestell-Nr.",
+  "BTN_TRACK": "Verfolgen"
 }

@@ -12,7 +12,7 @@ angular.module('juiceShop').controller('BasketController', [
 
     userService.whoAmI().then(function (data) {
       $scope.userEmail = data.email || 'anonymous'
-    })
+    }).catch(angular.noop)
 
     $scope.couponPanelExpanded = $window.localStorage.couponPanelExpanded ? JSON.parse($window.localStorage.couponPanelExpanded) : false
     $scope.paymentPanelExpanded = $window.localStorage.paymentPanelExpanded ? JSON.parse($window.localStorage.paymentPanelExpanded) : false
@@ -52,7 +52,7 @@ angular.module('juiceShop').controller('BasketController', [
           $scope.confirmation = discountApplied
         }, function (translationId) {
           $scope.confirmation = translationId
-        })
+        }).catch(angular.noop)
         $scope.error = undefined
         $scope.form.$setPristine()
       }).catch(function (error) {
@@ -134,18 +134,20 @@ angular.module('juiceShop').controller('BasketController', [
       })
     }
 
-    $scope.twitterUrl = 'https://twitter.com/owasp_juiceshop'
-    $scope.facebookUrl = 'https://www.facebook.com/owasp.juiceshop'
+    $scope.twitterUrl = null
+    $scope.facebookUrl = null
     $scope.applicationName = 'OWASP Juice Shop'
     configurationService.getApplicationConfiguration().then(function (config) {
-      if (config && config.application && config.application.twitterUrl !== null) {
-        $scope.twitterUrl = config.application.twitterUrl
-      }
-      if (config && config.application && config.application.facebookUrl !== null) {
-        $scope.facebookUrl = config.application.facebookUrl
-      }
-      if (config && config.application && config.application.name !== null) {
-        $scope.applicationName = config.application.name
+      if (config && config.application) {
+        if (config.application.twitterUrl !== null) {
+          $scope.twitterUrl = config.application.twitterUrl
+        }
+        if (config.application.facebookUrl !== null) {
+          $scope.facebookUrl = config.application.facebookUrl
+        }
+        if (config.application.name !== null) {
+          $scope.applicationName = config.application.name
+        }
       }
     }).catch(function (err) {
       console.log(err)

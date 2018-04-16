@@ -5,6 +5,7 @@ describe('controllers', function () {
   beforeEach(inject(function ($injector) {
     $httpBackend = $injector.get('$httpBackend')
     $httpBackend.whenGET(/\/i18n\/.*\.json/).respond(200, {})
+    $httpBackend.whenGET(/views\/.*\.html/).respond(200, {})
     $httpBackend.whenGET(/.*application-configuration/).respond(200, {'config': {'application': {'showCtfFlagsInNotifications': true, 'showChallengeSolvedNotifications': true}}})
     $sce = $injector.get('$sce')
   }))
@@ -135,6 +136,14 @@ describe('controllers', function () {
         $httpBackend.flush()
 
         expect(scope.completionColor).toBe('success')
+      }))
+
+      it('should complete a level when all challenges of that difficulty are solved', inject(function () {
+        $httpBackend.whenGET('/api/Challenges/').respond(200, { data: [ { solved: true, difficulty: 3 }, { solved: true, difficulty: 3 }, { solved: true, difficulty: 3 }, { solved: true, difficulty: 3 } ] })
+
+        $httpBackend.flush()
+
+        expect(scope.offsetValue[2]).toBe('0%')
       }))
     })
 

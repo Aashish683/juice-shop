@@ -1,6 +1,7 @@
 const path = require('path')
 const fs = require('fs')
 const PDFDocument = require('pdfkit')
+const uuidv5 = require('uuid/v5')
 const utils = require('../lib/utils')
 const insecurity = require('../lib/insecurity')
 const models = require('../models/index')
@@ -8,14 +9,14 @@ const products = require('../data/datacache').products
 const challenges = require('../data/datacache').challenges
 const config = require('config')
 
-exports = module.exports = function placeOrder () {
+module.exports = function placeOrder () {
   return (req, res, next) => {
     const id = req.params.id
     models.Basket.find({ where: { id }, include: [ { model: models.Product, paranoid: false } ] })
       .then(basket => {
         if (basket) {
           const customer = insecurity.authenticatedUsers.from(req)
-          const orderNo = insecurity.hash(new Date() + '_' + id)
+          const orderNo = uuidv5(config.get('application.domain'), uuidv5.DNS)
           const pdfFile = 'order_' + orderNo + '.pdf'
           const doc = new PDFDocument()
           const fileWriter = doc.pipe(fs.createWriteStream(path.join(__dirname, '../ftp/', pdfFile)))

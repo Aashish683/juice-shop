@@ -24,13 +24,16 @@
   "MANDATORY_COMMENT": "Silahkan Berikan komentar.",
   "INVALID_COMMENT_LENGTH": "Komentar harus {{length}} panjang karakter.",
   "MANDATORY_RATING": "Tolong Berikan rating.",
+  "MANDATORY_CAPTCHA": "Please solve the CAPTCHA to prove you are a real person.",
   "LABEL_AUTHOR": "Nama",
   "LABEL_COMMENT": "Komentar",
   "LABEL_RATING": "Peringkat",
+  "LABEL_CAPTCHA": "What is",
   "BTN_SUBMIT": "Submit",
   "TITLE_ABOUT": "Tentang kami",
   "SECTION_CORPORATE_HISTORY": "Sejarah perusahaan & kebijakan",
   "SECTION_CUSTOMER_FEEDBACK": "Feedback pelanggan",
+  "SECTION_SOCIAL_MEDIA": "Follow us on Social Media",
   "LINK_TERMS_OF_USE": "Lihat persyaratan penggunaan kami yang membosankan jika anda tertarik dengan hal semacam itu.",
   "TITLE_ADMINISTRATION": "Administrasi",
   "SECTION_USER": "Pengguna terdaftar",
@@ -134,5 +137,9 @@
   "SECTION_SALES_PITCH": "Convincing ICO Sales Pitch",
   "GIVE_US_ALL_YOUR_MONEY": "Give us all your money.",
   "ICO_FAQ_QUESTION": "Can I really get rich with {{juicycoin}}?",
-  "ICO_FAQ_ANSWER": "Of course you can! We would never lie to you!"
+  "ICO_FAQ_ANSWER": "Of course you can! We would never lie to you!",
+  "TITLE_TRACK_ORDERS": "Track Orders",
+  "TITLE_TRACK_RESULTS": "Results for ID",
+  "LABEL_ORDER_ID": "Order ID",
+  "BTN_TRACK": "Track"
 }

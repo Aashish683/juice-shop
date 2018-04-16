@@ -2,7 +2,7 @@ const utils = require('../lib/utils')
 const insecurity = require('../lib/insecurity')
 const challenges = require('../data/datacache').challenges
 
-exports = module.exports = function performRedirect () {
+module.exports = function performRedirect () {
   return ({query}, res, next) => {
     const toUrl = query.to
     if (insecurity.isRedirectAllowed(toUrl)) {
@@ -22,8 +22,8 @@ exports = module.exports = function performRedirect () {
 
 function isUnintendedRedirect (toUrl) {
   let unintended = true
-  insecurity.redirectWhitelist.forEach(allowedUrl => {
+  for (let allowedUrl of insecurity.redirectWhitelist) {
     unintended = unintended && !utils.startsWith(toUrl, allowedUrl)
-  })
+  }
   return unintended
 }

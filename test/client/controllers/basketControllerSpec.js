@@ -12,6 +12,7 @@ describe('controllers', function () {
   beforeEach(inject(function ($injector) {
     $httpBackend = $injector.get('$httpBackend')
     $httpBackend.whenGET(/\/i18n\/.*\.json/).respond(200, {})
+    $httpBackend.whenGET(/views\/.*\.html/).respond(200, {})
     $httpBackend.whenGET('/rest/admin/application-configuration').respond(200, {config: {}})
     $httpBackend.whenGET('/rest/user/whoami').respond(200, {user: {}})
     $sce = $injector.get('$sce')
@@ -338,14 +339,14 @@ describe('controllers', function () {
       expect($sce.trustAsHtml).toHaveBeenCalledWith('<script>alert("XSS")</script>')
     }))
 
-    it('should use default twitter and facebook URLs if not customized', inject(function () {
+    it('should not hold twitter or facebook URL if not defined in configuration', inject(function () {
       $httpBackend.whenGET('/rest/basket/42').respond(200, {data: {Products: []}})
       $httpBackend.expectGET('/rest/admin/application-configuration').respond(200, {config: {}})
 
       $httpBackend.flush()
 
-      expect(scope.twitterUrl).toBe('https://twitter.com/owasp_juiceshop')
-      expect(scope.facebookUrl).toBe('https://www.facebook.com/owasp.juiceshop')
+      expect(scope.twitterUrl).toBe(null)
+      expect(scope.facebookUrl).toBe(null)
     }))
 
     it('should use custom twitter URL if configured', inject(function () {

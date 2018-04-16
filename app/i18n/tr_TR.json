@@ -24,13 +24,16 @@
   "MANDATORY_COMMENT": "Lütfen bir yorum giriniz.",
   "INVALID_COMMENT_LENGTH": "Yorum uzunluğu {{length}} karakter olmalıdır.",
   "MANDATORY_RATING": "Lütfen bir derecelendirme veriniz.",
+  "MANDATORY_CAPTCHA": "Please solve the CAPTCHA to prove you are a real person.",
   "LABEL_AUTHOR": "Yazar",
   "LABEL_COMMENT": "Yorum",
   "LABEL_RATING": "Derecelendirme",
+  "LABEL_CAPTCHA": "What is",
   "BTN_SUBMIT": "Gönder",
   "TITLE_ABOUT": "Hakkımızda",
   "SECTION_CORPORATE_HISTORY": "Tarihçe ve İlkeler",
   "SECTION_CUSTOMER_FEEDBACK": "Müşteri Geri Bildirimleri",
+  "SECTION_SOCIAL_MEDIA": "Follow us on Social Media",
   "LINK_TERMS_OF_USE": "Böyle sıkıcı şeyler ile ilgileniyorsanız sıkıcı kullanım koşullarımıza göz atın.",
   "TITLE_ADMINISTRATION": "Yönetim",
   "SECTION_USER": "Kayıtlı Kullanıcılar",
@@ -134,5 +137,9 @@
   "SECTION_SALES_PITCH": "Convincing ICO Sales Pitch",
   "GIVE_US_ALL_YOUR_MONEY": "Give us all your money.",
   "ICO_FAQ_QUESTION": "Can I really get rich with {{juicycoin}}?",
-  "ICO_FAQ_ANSWER": "Of course you can! We would never lie to you!"
+  "ICO_FAQ_ANSWER": "Of course you can! We would never lie to you!",
+  "TITLE_TRACK_ORDERS": "Track Orders",
+  "TITLE_TRACK_RESULTS": "Results for ID",
+  "LABEL_ORDER_ID": "Order ID",
+  "BTN_TRACK": "Track"
 }

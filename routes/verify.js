@@ -12,9 +12,23 @@ exports.forgedFeedbackChallenge = () => (req, res, next) => {
   if (utils.notSolved(challenges.forgedFeedbackChallenge)) {
     const user = insecurity.authenticatedUsers.from(req)
     const userId = user && user.data ? user.data.id : undefined
-    if (req.body.UserId && req.body.UserId && req.body.UserId != userId) { // eslint-disable-line eqeqeq
+    if (req.body && req.body.UserId && req.body.UserId != userId) { // eslint-disable-line eqeqeq
       utils.solve(challenges.forgedFeedbackChallenge)
     }
+  }
+  next()
+}
+
+exports.captchaBypassChallenge = () => (req, res, next) => {
+  /* jshint eqeqeq:false */
+  if (utils.notSolved(challenges.captchaBypassChallenge)) {
+    if (req.app.locals.captchaReqId >= 10) {
+      if ((new Date().getTime() - req.app.locals.captchaBypassReqTimes[req.app.locals.captchaReqId - 10]) <= 10000) {
+        utils.solve(challenges.captchaBypassChallenge)
+      }
+    }
+    req.app.locals.captchaBypassReqTimes[req.app.locals.captchaReqId - 1] = new Date().getTime()
+    req.app.locals.captchaReqId++
   }
   next()
 }
@@ -32,6 +46,8 @@ exports.accessControlChallenges = () => ({url}, res, next) => {
     utils.solve(challenges.extraLanguageChallenge)
   } else if (utils.notSolved(challenges.retrieveBlueprintChallenge) && utils.endsWith(url, cache.retrieveBlueprintChallengeFile)) {
     utils.solve(challenges.retrieveBlueprintChallenge)
+  } else if (utils.notSolved(challenges.securityPolicyChallenge) && utils.endsWith(url, '/security.txt')) {
+    utils.solve(challenges.securityPolicyChallenge)
   }
   next()
 }

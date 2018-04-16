@@ -24,13 +24,16 @@
   "MANDATORY_COMMENT": "コメントを入力してください",
   "INVALID_COMMENT_LENGTH": "コメントは {{length}} 文字以上で入力してください",
   "MANDATORY_RATING": "評価を入力してください",
+  "MANDATORY_CAPTCHA": "Please solve the CAPTCHA to prove you are a real person.",
   "LABEL_AUTHOR": "著者",
   "LABEL_COMMENT": "コメント",
   "LABEL_RATING": "評価",
+  "LABEL_CAPTCHA": "What is",
   "BTN_SUBMIT": "提出",
   "TITLE_ABOUT": "会社概要",
   "SECTION_CORPORATE_HISTORY": "社歴 & ポリシー",
   "SECTION_CUSTOMER_FEEDBACK": "カスタマーフィードバック",
+  "SECTION_SOCIAL_MEDIA": "Follow us on Social Media",
   "LINK_TERMS_OF_USE": "もしくだらないことにご興味がおありでしたら、弊サイトの退屈な利用規約をご確認ください",
   "TITLE_ADMINISTRATION": "管理",
   "SECTION_USER": "登録ユーザー",
@@ -134,5 +137,9 @@
   "SECTION_SALES_PITCH": "Convincing ICO Sales Pitch",
   "GIVE_US_ALL_YOUR_MONEY": "Give us all your money.",
   "ICO_FAQ_QUESTION": "Can I really get rich with {{juicycoin}}?",
-  "ICO_FAQ_ANSWER": "Of course you can! We would never lie to you!"
+  "ICO_FAQ_ANSWER": "Of course you can! We would never lie to you!",
+  "TITLE_TRACK_ORDERS": "Track Orders",
+  "TITLE_TRACK_RESULTS": "Results for ID",
+  "LABEL_ORDER_ID": "Order ID",
+  "BTN_TRACK": "Track"
 }

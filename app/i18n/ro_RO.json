@@ -24,13 +24,16 @@
   "MANDATORY_COMMENT": "Vă rugăm să furnizaţi un comentariu.",
   "INVALID_COMMENT_LENGTH": "Lungimea comentariului trebuie să aibă {{length}} caractere.",
   "MANDATORY_RATING": "Vă rugăm să furnizaţi un rating.",
+  "MANDATORY_CAPTCHA": "Please solve the CAPTCHA to prove you are a real person.",
   "LABEL_AUTHOR": "Autor",
   "LABEL_COMMENT": "Comentariu",
   "LABEL_RATING": "Rating",
+  "LABEL_CAPTCHA": "What is",
   "BTN_SUBMIT": "Trimitere",
   "TITLE_ABOUT": "Despre Noi",
   "SECTION_CORPORATE_HISTORY": "Politica si istoria companiei",
   "SECTION_CUSTOMER_FEEDBACK": "Feedback-ul clienților",
+  "SECTION_SOCIAL_MEDIA": "Follow us on Social Media",
   "LINK_TERMS_OF_USE": "Verifică plictisitorii termeni de utilizare în cazul în care sunteţi interesat de chestii atât de penibile.",
   "TITLE_ADMINISTRATION": "Administrare",
   "SECTION_USER": "Utilizatori inregistraţi",
@@ -134,5 +137,9 @@
   "SECTION_SALES_PITCH": "Convincing ICO Sales Pitch",
   "GIVE_US_ALL_YOUR_MONEY": "Give us all your money.",
   "ICO_FAQ_QUESTION": "Can I really get rich with {{juicycoin}}?",
-  "ICO_FAQ_ANSWER": "Of course you can! We would never lie to you!"
+  "ICO_FAQ_ANSWER": "Of course you can! We would never lie to you!",
+  "TITLE_TRACK_ORDERS": "Track Orders",
+  "TITLE_TRACK_RESULTS": "Results for ID",
+  "LABEL_ORDER_ID": "Order ID",
+  "BTN_TRACK": "Track"
 }

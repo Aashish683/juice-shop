@@ -97,6 +97,7 @@
     "z85": "~0.0"
   },
   "devDependencies": {
+    "@angular/cli": "^6.0.0",
     "chai": "~4.1",
     "codeclimate-test-reporter": "~0.5",
     "cross-spawn": "^6.0.5",
